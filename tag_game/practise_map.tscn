@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cdjdmuv573482"]
+
+[ext_resource type="PackedScene" uid="uid://xtcvewihvyhj" path="res://player.tscn" id="1_0nps2"]
+[ext_resource type="Script" uid="uid://buofx2ogxi1o6" path="res://practise_map.gd" id="1_yu8s3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
+size = Vector2(1263, 125)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=961243516]
+script = ExtResource("1_yu8s3")
+
+[node name="Label" type="Label" parent="." unique_id=1966233753]
+offset_left = 1.0
+offset_right = 1152.0
+offset_bottom = 23.0
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1420010681]
+position = Vector2(605.5, 680)
+shape = SubResource("RectangleShape2D_fh2hd")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1978991359]
+offset_left = -26.0
+offset_top = 618.0
+offset_right = 1240.0
+offset_bottom = 745.0
+
+[node name="playerone" parent="." unique_id=1990145254 instance=ExtResource("1_0nps2")]
+position = Vector2(1099, 588)
+jump = "player_one_jump"
+left = "player_one_left"
+right = "player_one_right"
+color = Color(0, 0, 1, 1)
+
+[node name="playertwo" parent="." unique_id=1996809327 instance=ExtResource("1_0nps2")]
+position = Vector2(38, 582)
+jump = "player_two_jump"
+left = "player_two_left"
+right = "player_two_right"
+color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=1445887463]
+wait_time = 120.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
