@@ -6,8 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
 size = Vector2(1263, 125)
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=961243516]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sdnyn"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nuh0o"]
+normal = Vector2(1, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=961243516 node_paths=PackedStringArray("timer", "label")]
 script = ExtResource("1_yu8s3")
+set_time = 5
+timer = NodePath("Timer")
+label = NodePath("Label")
 
 [node name="Label" type="Label" parent="." unique_id=1966233753]
 offset_left = 1.0
@@ -20,6 +29,10 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1420010681]
 position = Vector2(605.5, 680)
 shape = SubResource("RectangleShape2D_fh2hd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1298087775]
+position = Vector2(1152, 0)
+shape = SubResource("WorldBoundaryShape2D_sdnyn")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1978991359]
 offset_left = -26.0
@@ -43,5 +56,8 @@ color = Color(1, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=1445887463]
 wait_time = 120.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=951273192]
+shape = SubResource("WorldBoundaryShape2D_nuh0o")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

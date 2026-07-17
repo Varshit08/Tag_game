@@ -1,14 +1,18 @@
 extends StaticBody2D
 
-@onready var timer = $Timer
-@onready var label = $ColorRect/Label
+@export var set_time : int
+@export var timer : Timer
+@export var label : Label
+
 
 func _ready():
-	timer.start(120)
+	timer.start(set_time)
 
-func _process(delta):
+
+func _process(_delta):
 	if !get_tree().paused:
-		label.text = str(int(timer.time_left))
+		label.text = str(int(ceil(timer.time_left)))
+	
 	
 func _on_timer_timeout():
 	label.text = "Time Is Up!"
