@@ -5,9 +5,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
 size = Vector2(40, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdnyn"]
+size = Vector2(40, 40)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1990145254 node_paths=PackedStringArray("color_rect")]
+collision_layer = 2
 script = ExtResource("1_4flbx")
 color_rect = NodePath("CollisionShape2D/ColorRect")
+metadata/tagger = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730235007]
 shape = SubResource("RectangleShape2D_fh2hd")
@@ -18,3 +23,11 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 color = Color(0.3434636, 0.71611685, 0.603403, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1763371737]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1768344767]
+shape = SubResource("RectangleShape2D_sdnyn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -14,7 +14,7 @@ normal = Vector2(1, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" unique_id=961243516 node_paths=PackedStringArray("timer", "label")]
 script = ExtResource("1_yu8s3")
-set_time = 5
+set_time = 120
 timer = NodePath("Timer")
 label = NodePath("Label")
 
