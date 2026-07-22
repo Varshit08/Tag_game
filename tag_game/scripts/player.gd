@@ -1,21 +1,26 @@
 extends CharacterBody2D
 
+const TAGGER_META := "tagger"
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED := 300.0
+const JUMP_VELOCITY := -500.0
 
+@export var color_rect : ColorRect
+@export var tag_indicator : Label
+@export var can_tag : bool = true
+
+@export_group("Player Changes")
 @export var jump : String
 @export var left : String
 @export var right : String
 @export var color : Color
-@export var color_rect : ColorRect
-
-@export var can_tag := true
 
 
 func _ready() -> void:
 	color_rect.color = color
-	
+	update_indicator()
+	print(get_meta(TAGGER_META))
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -33,21 +38,35 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
 	
-	print(name, " - currently is : ", get_meta("tagger"))
+	move_and_slide()
 
 
+func update_indicator():
+	tag_indicator.visible = get_meta(TAGGER_META)
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_meta("tagger"):
+
+func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	if body == self:
+		return
+	if !can_tag:
+		return
+	
+	if get_meta(TAGGER_META, false):
+			
+		set_meta(TAGGER_META, false)
+		body.set_meta(TAGGER_META, true)
+		
+		update_indicator()
+		body.update_indicator()
 		can_tag = false
-		if body.get_meta("tagger") == true:
-			set_meta("tagger", true)
-			body.set_meta("tagger", false)
+		body.can_tag = false
+
+
+func reset_can_tag():
+	can_tag = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.has_meta("tagger"):
-		can_tag = true
+	can_tag = true
+	body.reset_can_tag()
