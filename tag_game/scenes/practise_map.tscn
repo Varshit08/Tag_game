@@ -66,7 +66,7 @@ wait_time = 120.0
 shape = SubResource("WorldBoundaryShape2D_nuh0o")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=517615055]
-position = Vector2(520, 555)
+position = Vector2(482, 531)
 shape = SubResource("RectangleShape2D_sdnyn")
 
 [node name="ColorRect2" type="ColorRect" parent="CollisionShape2D4" unique_id=1117998135]
@@ -75,9 +75,10 @@ offset_top = -20.0
 offset_right = -127.0
 offset_bottom = 20.0
 scale = Vector2(8.34994, 1.0157633)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=1053097758]
-position = Vector2(104, 468)
+position = Vector2(91, 443)
 shape = SubResource("RectangleShape2D_sdnyn")
 
 [node name="ColorRect2" type="ColorRect" parent="CollisionShape2D5" unique_id=299382098]
@@ -86,9 +87,10 @@ offset_top = -20.0
 offset_right = -127.0
 offset_bottom = 20.0
 scale = Vector2(8.34994, 1.0157633)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=60112043]
-position = Vector2(899, 430)
+position = Vector2(933, 503)
 shape = SubResource("RectangleShape2D_sdnyn")
 
 [node name="ColorRect2" type="ColorRect" parent="CollisionShape2D6" unique_id=1637993220]
@@ -97,9 +99,10 @@ offset_top = -20.0
 offset_right = -127.0
 offset_bottom = 20.0
 scale = Vector2(8.34994, 1.0157633)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="." unique_id=2095458016]
-position = Vector2(559, 342)
+position = Vector2(559, 387)
 shape = SubResource("RectangleShape2D_sdnyn")
 
 [node name="ColorRect2" type="ColorRect" parent="CollisionShape2D7" unique_id=1433968700]
@@ -108,9 +111,10 @@ offset_top = -20.0
 offset_right = -127.0
 offset_bottom = 20.0
 scale = Vector2(8.34994, 1.0157633)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="." unique_id=424700711]
-position = Vector2(1051, 262)
+position = Vector2(1044, 301)
 shape = SubResource("RectangleShape2D_sdnyn")
 
 [node name="ColorRect2" type="ColorRect" parent="CollisionShape2D8" unique_id=1740335841]
@@ -119,9 +123,10 @@ offset_top = -20.0
 offset_right = -127.0
 offset_bottom = 20.0
 scale = Vector2(8.34994, 1.0157633)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="." unique_id=277804613]
-position = Vector2(233, 237)
+position = Vector2(157, 279)
 shape = SubResource("RectangleShape2D_sdnyn")
 
 [node name="ColorRect2" type="ColorRect" parent="CollisionShape2D9" unique_id=1188821220]
@@ -130,9 +135,10 @@ offset_top = -20.0
 offset_right = -127.0
 offset_bottom = 20.0
 scale = Vector2(8.34994, 1.0157633)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="." unique_id=359438180]
-position = Vector2(658, 136)
+position = Vector2(635, 195)
 shape = SubResource("RectangleShape2D_sdnyn")
 
 [node name="ColorRect2" type="ColorRect" parent="CollisionShape2D10" unique_id=885165328]
@@ -141,5 +147,6 @@ offset_top = -20.0
 offset_right = -127.0
 offset_bottom = 20.0
 scale = Vector2(8.34994, 1.0157633)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
