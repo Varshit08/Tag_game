@@ -1,43 +1,44 @@
 [gd_scene format=3 uid="uid://xtcvewihvyhj"]
 
 [ext_resource type="Script" uid="uid://bq11ug8pg6ocm" path="res://scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://cbaqfgpe264x4" path="res://player_assets/tug_indicator.png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
-size = Vector2(40, 40)
+size = Vector2(30, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdnyn"]
-size = Vector2(40, 40)
+size = Vector2(30, 30)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1990145254 node_paths=PackedStringArray("color_rect", "tag_indicator")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1990145254 node_paths=PackedStringArray("tag_indicator", "texture_rect")]
 collision_layer = 2
 script = ExtResource("1_4flbx")
-color_rect = NodePath("ColorRect")
-tag_indicator = NodePath("Label")
+tag_indicator = NodePath("indicator_texture")
+texture_rect = NodePath("player_texture")
 metadata/tagger = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730235007]
+position = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_fh2hd")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=215769875]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(0.3434636, 0.71611685, 0.603403, 1)
+[node name="player_texture" type="TextureRect" parent="." unique_id=1959486713]
+offset_right = 30.0
+offset_bottom = 30.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1763371737]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1768344767]
+position = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_sdnyn")
 
-[node name="Label" type="Label" parent="." unique_id=1702454651]
-offset_left = -7.0
-offset_top = -43.0
-offset_right = 7.0
-offset_bottom = -20.0
-text = "▽"
+[node name="indicator_texture" type="TextureRect" parent="." unique_id=1001034]
+texture_filter = 1
+offset_left = 4.0
+offset_top = -18.0
+offset_right = 25.0
+texture = ExtResource("2_g2els")
+stretch_mode = 2
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

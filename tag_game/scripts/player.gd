@@ -5,19 +5,19 @@ const TAGGER_META := "tagger"
 const SPEED := 300.0
 const JUMP_VELOCITY := -500.0
 
-@export var color_rect : ColorRect
-@export var tag_indicator : Label
+@export var player_texture : Texture
+@export var tag_indicator : TextureRect
 @export var can_tag : bool = true
 
 @export_group("Player Changes")
 @export var jump : String
 @export var left : String
 @export var right : String
-@export var color : Color
+@export var texture_rect : TextureRect
 
 
 func _ready() -> void:
-	color_rect.color = color
+	texture_rect.texture = player_texture
 	update_indicator()
 	print(get_meta(TAGGER_META))
 

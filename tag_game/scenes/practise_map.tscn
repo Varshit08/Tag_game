@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://xtcvewihvyhj" path="res://scenes/player.tscn" id="1_0nps2"]
 [ext_resource type="Script" uid="uid://buofx2ogxi1o6" path="res://scripts/practise_map.gd" id="1_yu8s3"]
+[ext_resource type="FontFile" uid="uid://dlu2jcvfyp12d" path="res://fonts/Boring Time.otf" id="2_dont8"]
+[ext_resource type="Texture2D" uid="uid://bj0yf2qvtxset" path="res://player_assets/blue.png" id="4_b8sqq"]
+[ext_resource type="Texture2D" uid="uid://ww581jhabf6s" path="res://player_assets/red.png" id="5_50rx3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2ohw"]
+font = ExtResource("2_dont8")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
 size = Vector2(1264.75, 128.5)
@@ -17,7 +23,7 @@ size = Vector2(333, 40)
 
 [node name="StaticBody2D" type="StaticBody2D" unique_id=961243516 node_paths=PackedStringArray("timer", "label", "player_one", "player_two")]
 script = ExtResource("1_yu8s3")
-set_time = 120
+set_time = 5
 timer = NodePath("Timer")
 label = NodePath("Label")
 player_one = NodePath("playerone")
@@ -28,6 +34,7 @@ offset_left = 1.0
 offset_right = 1152.0
 offset_bottom = 23.0
 text = "120"
+label_settings = SubResource("LabelSettings_p2ohw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -46,18 +53,18 @@ offset_right = 1195.0
 offset_bottom = 730.0
 
 [node name="playerone" parent="." unique_id=1990145254 instance=ExtResource("1_0nps2")]
-position = Vector2(36, 582)
+position = Vector2(37, 570)
+player_texture = ExtResource("4_b8sqq")
 jump = "player_one_jump"
 left = "player_one_left"
 right = "player_one_right"
-color = Color(0, 0, 1, 1)
 
 [node name="playertwo" parent="." unique_id=1996809327 instance=ExtResource("1_0nps2")]
-position = Vector2(1113, 579)
+position = Vector2(1115, 569)
+player_texture = ExtResource("5_50rx3")
 jump = "player_two_jump"
 left = "player_two_left"
 right = "player_two_right"
-color = Color(1, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=1445887463]
 wait_time = 120.0
@@ -148,5 +155,8 @@ offset_right = -127.0
 offset_bottom = 20.0
 scale = Vector2(8.34994, 1.0157633)
 metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1748953124]
+position = Vector2(576, 322)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
