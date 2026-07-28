@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbaqfgpe264x4"
-path="res://.godot/imported/tug_indicator.png-8e64d322886853a5f388b2cd78e1c74c.ctex"
+uid="uid://ww581jhabf6s"
+path="res://.godot/imported/red.png-c2ffc6db138c3fc093f7813538ee34c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player_assets/tug_indicator.png"
-dest_files=["res://.godot/imported/tug_indicator.png-8e64d322886853a5f388b2cd78e1c74c.ctex"]
+source_file="res://assets/player_assets/red.png"
+dest_files=["res://.godot/imported/red.png-c2ffc6db138c3fc093f7813538ee34c3.ctex"]
 
 [params]
 

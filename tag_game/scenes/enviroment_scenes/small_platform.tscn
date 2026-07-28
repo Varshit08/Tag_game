@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ixrwlmxq01q3"]
+
+[ext_resource type="Texture2D" uid="uid://chr67ex02p1he" path="res://assets/enviroment_assets/small_platform.png" id="1_nvcq6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(66, 26)
+
+[node name="small_platform" type="StaticBody2D" unique_id=4246535]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1374687936]
+position = Vector2(33, 13)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1663758942]
+texture_filter = 1
+offset_right = 66.0
+offset_bottom = 26.0
+texture = ExtResource("1_nvcq6")
+stretch_mode = 2

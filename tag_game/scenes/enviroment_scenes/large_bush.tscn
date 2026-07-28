@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bgn7j4m78wq3m"]
+
+[ext_resource type="Texture2D" uid="uid://1dg5dpwrxt73" path="res://assets/enviroment_assets/image 17.png" id="1_nflj5"]
+
+[node name="TextureRect" type="TextureRect" unique_id=24437237]
+texture_filter = 1
+offset_left = -1.0
+offset_right = 17.0
+offset_bottom = 42.0
+texture = ExtResource("1_nflj5")
+stretch_mode = 2

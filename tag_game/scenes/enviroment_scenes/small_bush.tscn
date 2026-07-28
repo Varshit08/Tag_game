@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bq4cd5he1vj2m"]
+
+[ext_resource type="Texture2D" uid="uid://dmtmjf0l6wkyb" path="res://assets/enviroment_assets/small_bush.png" id="1_jjoqu"]
+
+[node name="TextureRect" type="TextureRect" unique_id=24437237]
+texture_filter = 1
+offset_right = 18.0
+offset_bottom = 21.0
+texture = ExtResource("1_jjoqu")
+stretch_mode = 2

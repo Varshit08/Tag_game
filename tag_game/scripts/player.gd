@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const TAGGER_META := "tagger"
 
-const SPEED := 300.0
-const JUMP_VELOCITY := -500.0
+var SPEED := 300.0
+var JUMP_VELOCITY := -500.0
 
 @export var player_texture : Texture
 @export var tag_indicator : TextureRect
@@ -40,7 +40,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
-
+	if get_meta(TAGGER_META, true):
+		SPEED = 310.0
+	else:
+		SPEED = 300.0
 
 func update_indicator():
 	tag_indicator.visible = get_meta(TAGGER_META)

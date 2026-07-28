@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj0yf2qvtxset"
-path="res://.godot/imported/blue.png-f343816f613af1f95e96b2e6cf4cb70b.ctex"
+uid="uid://dd60mhjd4uvdu"
+path="res://.godot/imported/pink_flower.png-529d0380a0b20136b7e0de83fa9f7682.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player_assets/blue.png"
-dest_files=["res://.godot/imported/blue.png-f343816f613af1f95e96b2e6cf4cb70b.ctex"]
+source_file="res://assets/enviroment_assets/pink_flower.png"
+dest_files=["res://.godot/imported/pink_flower.png-529d0380a0b20136b7e0de83fa9f7682.ctex"]
 
 [params]
 

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c2d0xrw08wy8d"]
+
+[ext_resource type="Texture2D" uid="uid://vcrsf1bh57b1" path="res://assets/enviroment_assets/multi_crate.png" id="1_egv5r"]
+
+[node name="TextureRect" type="TextureRect" unique_id=24437237]
+texture_filter = 1
+offset_right = 18.0
+offset_bottom = 26.0
+texture = ExtResource("1_egv5r")
+stretch_mode = 2

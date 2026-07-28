@@ -12,11 +12,17 @@ const TAGGER_META := "tagger"
 
 
 func _ready():
+	randomize()
 	timer.start(set_time)
 	
-	player_one.set_meta(TAGGER_META, true)
-	print("set player one meta")
-	player_two.set_meta(TAGGER_META, false)
+	if randi() % 2 == 0:
+		player_one.set_meta(TAGGER_META, true)
+		player_two.set_meta(TAGGER_META, false)
+		print("Set player one meta")
+	else:
+		player_one.set_meta(TAGGER_META, false)
+		player_two.set_meta(TAGGER_META, true)
+		print("Set player two meta")
 	
 	player_one.update_indicator()
 	player_two.update_indicator()

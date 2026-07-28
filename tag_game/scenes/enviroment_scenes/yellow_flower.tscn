@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bv7gfydkl1vub"]
+
+[ext_resource type="Texture2D" uid="uid://vseqr2gk32he" path="res://assets/enviroment_assets/yellow_flower.png" id="1_crjpg"]
+
+[node name="TextureRect" type="TextureRect" unique_id=24437237]
+texture_filter = 1
+offset_right = 18.0
+offset_bottom = 26.0
+texture = ExtResource("1_crjpg")
+stretch_mode = 2

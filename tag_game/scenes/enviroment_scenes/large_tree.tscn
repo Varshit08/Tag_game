@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bveervk4mlu6l"]
+
+[ext_resource type="Texture2D" uid="uid://bxkpepknbm2su" path="res://assets/enviroment_assets/large_tree.png" id="1_ysrjl"]
+
+[node name="TextureRect" type="TextureRect" unique_id=24437237]
+texture_filter = 1
+offset_right = 18.0
+offset_bottom = 26.0
+texture = ExtResource("1_ysrjl")
+stretch_mode = 2
