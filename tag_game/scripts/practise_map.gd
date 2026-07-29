@@ -47,3 +47,8 @@ func _on_timer_timeout():
 		print("Player Two Loses!")
 		
 	get_tree().paused = true
+
+
+func _on_pause_button_pressed() -> void:
+	get_tree().paused = true
+	# Replace with function body.

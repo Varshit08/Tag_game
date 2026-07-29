@@ -10,10 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dlms0d0eqpdla" path="res://scenes/enviroment_scenes/pink_flower.tscn" id="8_u2wpt"]
 [ext_resource type="PackedScene" uid="uid://cgnei4l4i1uxf" path="res://scenes/enviroment_scenes/medium_platform.tscn" id="9_eybdv"]
 [ext_resource type="PackedScene" uid="uid://bepciqwfky7rr" path="res://scenes/enviroment_scenes/tiny_platform.tscn" id="10_h7crl"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_p2ohw"]
-font = ExtResource("2_dont8")
-font_size = 50
+[ext_resource type="PackedScene" uid="uid://bmj3fiimwij2p" path="res://scenes/camera.tscn" id="11_eybdv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
 size = Vector2(1248, 136.25)
@@ -24,22 +21,17 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nuh0o"]
 normal = Vector2(1, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_p2ohw"]
+font = ExtResource("2_dont8")
+font_size = 50
+
 [node name="StaticBody2D" type="StaticBody2D" unique_id=961243516 node_paths=PackedStringArray("timer", "label", "player_one", "player_two")]
 script = ExtResource("1_yu8s3")
 set_time = 120
 timer = NodePath("Timer")
-label = NodePath("Label")
+label = NodePath("CanvasLayer/Label")
 player_one = NodePath("playerone")
 player_two = NodePath("playertwo")
-
-[node name="Label" type="Label" parent="." unique_id=1966233753]
-offset_left = 1.0
-offset_right = 1152.0
-offset_bottom = 23.0
-text = "120"
-label_settings = SubResource("LabelSettings_p2ohw")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1420010681]
 position = Vector2(571, 702.125)
@@ -69,9 +61,6 @@ wait_time = 120.0
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=951273192]
 shape = SubResource("WorldBoundaryShape2D_nuh0o")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1748953124]
-position = Vector2(576, 322)
-
 [node name="Image10" type="Sprite2D" parent="." unique_id=420537243]
 z_index = -1
 position = Vector2(577.38617, 370.58713)
@@ -86,151 +75,178 @@ offset_top = 609.0
 offset_right = 242.0
 offset_bottom = 635.0
 
-[node name="tiny_platform" parent="." unique_id=879688137 instance=ExtResource("10_h7crl")]
+[node name="pause_button" type="Button" parent="." unique_id=888513040]
+light_mask = 512
+visibility_layer = 512
+offset_top = 579.0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "Pause"
+
+[node name="environment" type="Node" parent="." unique_id=1652752546]
+
+[node name="tiny_platform" parent="environment" unique_id=879688137 instance=ExtResource("10_h7crl")]
 position = Vector2(636, 542)
 
-[node name="medium_platform7" parent="." unique_id=4246535 instance=ExtResource("9_eybdv")]
+[node name="medium_platform7" parent="environment" unique_id=4246535 instance=ExtResource("9_eybdv")]
 position = Vector2(-3, 350)
 
-[node name="medium_platform12" parent="." unique_id=55871461 instance=ExtResource("9_eybdv")]
+[node name="medium_platform12" parent="environment" unique_id=55871461 instance=ExtResource("9_eybdv")]
 position = Vector2(205, 350)
 
-[node name="medium_platform20" parent="." unique_id=622484315 instance=ExtResource("9_eybdv")]
+[node name="medium_platform20" parent="environment" unique_id=622484315 instance=ExtResource("9_eybdv")]
 position = Vector2(132, 350)
 
-[node name="medium_platform19" parent="." unique_id=695583030 instance=ExtResource("9_eybdv")]
+[node name="medium_platform19" parent="environment" unique_id=695583030 instance=ExtResource("9_eybdv")]
 position = Vector2(65, 350)
 
-[node name="medium_platform9" parent="." unique_id=1185391713 instance=ExtResource("9_eybdv")]
+[node name="medium_platform9" parent="environment" unique_id=1185391713 instance=ExtResource("9_eybdv")]
 position = Vector2(729, 281)
 
-[node name="medium_platform13" parent="." unique_id=98403396 instance=ExtResource("9_eybdv")]
+[node name="medium_platform13" parent="environment" unique_id=98403396 instance=ExtResource("9_eybdv")]
 position = Vector2(937, 281)
 
-[node name="medium_platform21" parent="." unique_id=1011975461 instance=ExtResource("9_eybdv")]
+[node name="medium_platform21" parent="environment" unique_id=1011975461 instance=ExtResource("9_eybdv")]
 position = Vector2(864, 281)
 
-[node name="medium_platform22" parent="." unique_id=1525136137 instance=ExtResource("9_eybdv")]
+[node name="medium_platform22" parent="environment" unique_id=1525136137 instance=ExtResource("9_eybdv")]
 position = Vector2(797, 281)
 
-[node name="large_platform8" parent="." unique_id=1992033459 instance=ExtResource("7_v0fls")]
+[node name="large_platform8" parent="environment" unique_id=1992033459 instance=ExtResource("7_v0fls")]
 position = Vector2(-4, 129)
 
-[node name="large_platform33" parent="." unique_id=1027075420 instance=ExtResource("7_v0fls")]
+[node name="large_platform33" parent="environment" unique_id=1027075420 instance=ExtResource("7_v0fls")]
 position = Vector2(79, 543)
 
-[node name="large_platform34" parent="." unique_id=481981320 instance=ExtResource("7_v0fls")]
+[node name="large_platform34" parent="environment" unique_id=481981320 instance=ExtResource("7_v0fls")]
 position = Vector2(165, 543)
 
-[node name="large_platform35" parent="." unique_id=73893273 instance=ExtResource("7_v0fls")]
+[node name="large_platform35" parent="environment" unique_id=73893273 instance=ExtResource("7_v0fls")]
 position = Vector2(226, 543)
 
-[node name="large_platform39" parent="." unique_id=1497231648 instance=ExtResource("7_v0fls")]
+[node name="large_platform39" parent="environment" unique_id=1497231648 instance=ExtResource("7_v0fls")]
 position = Vector2(295, 452)
 
-[node name="large_platform40" parent="." unique_id=217767966 instance=ExtResource("7_v0fls")]
+[node name="large_platform40" parent="environment" unique_id=217767966 instance=ExtResource("7_v0fls")]
 position = Vector2(381, 452)
 
-[node name="large_platform41" parent="." unique_id=1898874709 instance=ExtResource("7_v0fls")]
+[node name="large_platform41" parent="environment" unique_id=1898874709 instance=ExtResource("7_v0fls")]
 position = Vector2(421, 452)
 
-[node name="large_platform45" parent="." unique_id=961928469 instance=ExtResource("7_v0fls")]
+[node name="large_platform45" parent="environment" unique_id=961928469 instance=ExtResource("7_v0fls")]
 position = Vector2(715, 446)
 
-[node name="large_platform46" parent="." unique_id=1922475022 instance=ExtResource("7_v0fls")]
+[node name="large_platform46" parent="environment" unique_id=1922475022 instance=ExtResource("7_v0fls")]
 position = Vector2(801, 446)
 
-[node name="large_platform47" parent="." unique_id=1310903425 instance=ExtResource("7_v0fls")]
+[node name="large_platform47" parent="environment" unique_id=1310903425 instance=ExtResource("7_v0fls")]
 position = Vector2(841, 446)
 
-[node name="large_platform48" parent="." unique_id=326043514 instance=ExtResource("7_v0fls")]
+[node name="large_platform48" parent="environment" unique_id=326043514 instance=ExtResource("7_v0fls")]
 position = Vector2(702, 77)
 
-[node name="large_platform49" parent="." unique_id=754415244 instance=ExtResource("7_v0fls")]
+[node name="large_platform49" parent="environment" unique_id=754415244 instance=ExtResource("7_v0fls")]
 position = Vector2(788, 77)
 
-[node name="large_platform50" parent="." unique_id=1111249188 instance=ExtResource("7_v0fls")]
+[node name="large_platform50" parent="environment" unique_id=1111249188 instance=ExtResource("7_v0fls")]
 position = Vector2(828, 77)
 
-[node name="large_platform51" parent="." unique_id=2074164117 instance=ExtResource("7_v0fls")]
+[node name="large_platform51" parent="environment" unique_id=2074164117 instance=ExtResource("7_v0fls")]
 position = Vector2(345, 75)
 
-[node name="large_platform52" parent="." unique_id=523505940 instance=ExtResource("7_v0fls")]
+[node name="large_platform52" parent="environment" unique_id=523505940 instance=ExtResource("7_v0fls")]
 position = Vector2(431, 75)
 
-[node name="large_platform53" parent="." unique_id=1851669807 instance=ExtResource("7_v0fls")]
+[node name="large_platform53" parent="environment" unique_id=1851669807 instance=ExtResource("7_v0fls")]
 position = Vector2(471, 75)
 
-[node name="large_platform42" parent="." unique_id=470967664 instance=ExtResource("7_v0fls")]
+[node name="large_platform42" parent="environment" unique_id=470967664 instance=ExtResource("7_v0fls")]
 position = Vector2(272, 276)
 
-[node name="large_platform43" parent="." unique_id=1405125059 instance=ExtResource("7_v0fls")]
+[node name="large_platform43" parent="environment" unique_id=1405125059 instance=ExtResource("7_v0fls")]
 position = Vector2(358, 276)
 
-[node name="large_platform44" parent="." unique_id=1449197360 instance=ExtResource("7_v0fls")]
+[node name="large_platform44" parent="environment" unique_id=1449197360 instance=ExtResource("7_v0fls")]
 position = Vector2(398, 276)
 
-[node name="tiny_platform2" parent="." unique_id=307647104 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform2" parent="environment" unique_id=307647104 instance=ExtResource("10_h7crl")]
 position = Vector2(683, 542)
 
-[node name="tiny_platform4" parent="." unique_id=1128084731 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform4" parent="environment" unique_id=1128084731 instance=ExtResource("10_h7crl")]
 position = Vector2(729, 542)
 
-[node name="tiny_platform6" parent="." unique_id=817588599 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform6" parent="environment" unique_id=817588599 instance=ExtResource("10_h7crl")]
 position = Vector2(776, 542)
 
-[node name="tiny_platform7" parent="." unique_id=518329471 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform7" parent="environment" unique_id=518329471 instance=ExtResource("10_h7crl")]
 position = Vector2(819, 542)
 
-[node name="tiny_platform8" parent="." unique_id=2040893633 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform8" parent="environment" unique_id=2040893633 instance=ExtResource("10_h7crl")]
 position = Vector2(866, 542)
 
-[node name="tiny_platform9" parent="." unique_id=762613546 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform9" parent="environment" unique_id=762613546 instance=ExtResource("10_h7crl")]
 position = Vector2(913, 542)
 
-[node name="tiny_platform13" parent="." unique_id=694413057 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform13" parent="environment" unique_id=694413057 instance=ExtResource("10_h7crl")]
 position = Vector2(524, 153)
 
-[node name="tiny_platform14" parent="." unique_id=473194909 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform14" parent="environment" unique_id=473194909 instance=ExtResource("10_h7crl")]
 position = Vector2(571, 153)
 
-[node name="tiny_platform15" parent="." unique_id=2089184926 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform15" parent="environment" unique_id=2089184926 instance=ExtResource("10_h7crl")]
 position = Vector2(617, 153)
 
-[node name="tiny_platform16" parent="." unique_id=1208949268 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform16" parent="environment" unique_id=1208949268 instance=ExtResource("10_h7crl")]
 position = Vector2(664, 153)
 
-[node name="tiny_platform17" parent="." unique_id=1294535063 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform17" parent="environment" unique_id=1294535063 instance=ExtResource("10_h7crl")]
 position = Vector2(707, 153)
 
-[node name="tiny_platform18" parent="." unique_id=1657283933 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform18" parent="environment" unique_id=1657283933 instance=ExtResource("10_h7crl")]
 position = Vector2(754, 153)
 
-[node name="tiny_platform19" parent="." unique_id=202282441 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform19" parent="environment" unique_id=202282441 instance=ExtResource("10_h7crl")]
 position = Vector2(801, 153)
 
-[node name="tiny_platform10" parent="." unique_id=850508771 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform10" parent="environment" unique_id=850508771 instance=ExtResource("10_h7crl")]
 position = Vector2(960, 542)
 
-[node name="tiny_platform11" parent="." unique_id=848445246 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform11" parent="environment" unique_id=848445246 instance=ExtResource("10_h7crl")]
 position = Vector2(982, 542)
 
-[node name="tiny_platform12" parent="." unique_id=1707246293 instance=ExtResource("10_h7crl")]
+[node name="tiny_platform12" parent="environment" unique_id=1707246293 instance=ExtResource("10_h7crl")]
 position = Vector2(1029, 542)
 
-[node name="large_platform5" parent="." unique_id=930276998 instance=ExtResource("7_v0fls")]
+[node name="large_platform5" parent="environment" unique_id=930276998 instance=ExtResource("7_v0fls")]
 position = Vector2(1005, 162)
 
-[node name="large_platform" parent="." unique_id=989822771 instance=ExtResource("7_v0fls")]
+[node name="large_platform" parent="environment" unique_id=989822771 instance=ExtResource("7_v0fls")]
 position = Vector2(495, 360)
 
-[node name="large_platform2" parent="." unique_id=1406951101 instance=ExtResource("7_v0fls")]
+[node name="large_platform2" parent="environment" unique_id=1406951101 instance=ExtResource("7_v0fls")]
 position = Vector2(577, 360)
 
-[node name="medium_platform" parent="." unique_id=315163348 instance=ExtResource("9_eybdv")]
+[node name="medium_platform" parent="environment" unique_id=315163348 instance=ExtResource("9_eybdv")]
 position = Vector2(49, 282)
 
-[node name="medium_platform2" parent="." unique_id=730459651 instance=ExtResource("9_eybdv")]
+[node name="medium_platform2" parent="environment" unique_id=730459651 instance=ExtResource("9_eybdv")]
 position = Vector2(146, 201)
 
+[node name="Camera2D" parent="." unique_id=1375332101 node_paths=PackedStringArray("player1", "player2") instance=ExtResource("11_eybdv")]
+position = Vector2(576, 324)
+player1 = NodePath("../playerone")
+player2 = NodePath("../playertwo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894652531]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1966233753]
+offset_left = 1.0
+offset_right = 1152.0
+offset_bottom = 61.0
+text = "120"
+label_settings = SubResource("LabelSettings_p2ohw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="pause_button" to="." method="_on_pause_button_pressed"]
