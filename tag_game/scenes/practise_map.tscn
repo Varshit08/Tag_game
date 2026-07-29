@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cgnei4l4i1uxf" path="res://scenes/enviroment_scenes/medium_platform.tscn" id="9_eybdv"]
 [ext_resource type="PackedScene" uid="uid://bepciqwfky7rr" path="res://scenes/enviroment_scenes/tiny_platform.tscn" id="10_h7crl"]
 [ext_resource type="PackedScene" uid="uid://bmj3fiimwij2p" path="res://scenes/camera.tscn" id="11_eybdv"]
+[ext_resource type="Script" uid="uid://c8jgndltfa28u" path="res://scenes/pause_button.gd" id="11_h7crl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
 size = Vector2(1248, 136.25)
@@ -20,6 +21,9 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nuh0o"]
 normal = Vector2(1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdnyn"]
+bg_color = Color(0.218301, 0.218301, 0.21830091, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2ohw"]
 font = ExtResource("2_dont8")
@@ -74,14 +78,6 @@ offset_left = 226.0
 offset_top = 609.0
 offset_right = 242.0
 offset_bottom = 635.0
-
-[node name="pause_button" type="Button" parent="." unique_id=888513040]
-light_mask = 512
-visibility_layer = 512
-offset_top = 579.0
-offset_right = 1152.0
-offset_bottom = 648.0
-text = "Pause"
 
 [node name="environment" type="Node" parent="." unique_id=1652752546]
 
@@ -239,14 +235,30 @@ player2 = NodePath("../playertwo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894652531]
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=1966233753]
-offset_left = 1.0
+[node name="pause_button" type="Label" parent="CanvasLayer" unique_id=2013061642]
+light_mask = 512
+visibility_layer = 512
+offset_top = 579.0
 offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 29
+theme_override_styles/focus = SubResource("StyleBoxFlat_sdnyn")
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_h7crl")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1966233753]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -575.5
+offset_right = 575.5
 offset_bottom = 61.0
+grow_horizontal = 2
 text = "120"
 label_settings = SubResource("LabelSettings_p2ohw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="pause_button" to="." method="_on_pause_button_pressed"]

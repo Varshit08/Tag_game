@@ -9,10 +9,14 @@ const TAGGER_META := "tagger"
 @export var player_one : CharacterBody2D
 @export var player_two : CharacterBody2D
 @export var winner_label : Label
+@export var paused = false
 
 
 func _ready():
 	randomize()
+	timer = get_tree().current_scene.get_node("Timer")
+	player_one = get_tree().current_scene.get_node("playerone")
+	player_two = get_tree().current_scene.get_node("playertwo")
 	timer.start(set_time)
 	
 	if randi() % 2 == 0:
@@ -29,8 +33,19 @@ func _ready():
 
 
 func _process(_delta):
-	if !get_tree().paused:
+	if paused == false:
+		label = get_tree().current_scene.get_node("CanvasLayer/Label")
 		label.text = str(int(ceil(timer.time_left)))
+	
+	if Input.is_action_just_released("pause"):
+		if paused == false:
+			paused = true
+			print("paused")
+			return
+		if paused == true:
+			paused = false
+			print("unpaused")
+			return
 
 
 
@@ -47,8 +62,3 @@ func _on_timer_timeout():
 		print("Player Two Loses!")
 		
 	get_tree().paused = true
-
-
-func _on_pause_button_pressed() -> void:
-	get_tree().paused = true
-	# Replace with function body.
