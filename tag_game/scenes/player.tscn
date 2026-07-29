@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbaqfgpe264x4" path="res://assets/player_assets/tug_indicator.png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
-size = Vector2(35, 35)
+size = Vector2(30, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdnyn"]
 size = Vector2(30, 30)
@@ -17,6 +17,7 @@ texture_rect = NodePath("player_texture")
 metadata/tagger = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730235007]
+position = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_fh2hd")
 
 [node name="player_texture" type="TextureRect" parent="." unique_id=1959486713]
@@ -28,14 +29,14 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1768344767]
+position = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_sdnyn")
 
 [node name="indicator_texture" type="TextureRect" parent="." unique_id=1001034]
 texture_filter = 1
-offset_left = -10.0
-offset_top = -34.0
-offset_right = 11.0
-offset_bottom = -16.0
+offset_left = 4.0
+offset_top = -18.0
+offset_right = 25.0
 texture = ExtResource("2_g2els")
 stretch_mode = 2
 
