@@ -1,6 +1,18 @@
 extends CharacterBody2D
 
 const TAGGER_META := "tagger"
+const WALK_RIGHT_OFFSET := Vector2(-5.0, -9.0)
+const WALK_LEFT_OFFSET := Vector2(1.0, -9.0)
+const PLAYER_TEXTURE_OFFSET_LOOKUP := {
+	-1 : WALK_LEFT_OFFSET,
+	1 : WALK_RIGHT_OFFSET
+}
+
+const WALK_RIGHT := "walk_right"
+const WALK_LEFT := "walk_left"
+
+const NORMAL_SPEED := 300.0
+const TAG_SPEED := 310.0
 
 var SPEED := 300.0
 var JUMP_VELOCITY := -500.0
@@ -8,18 +20,18 @@ var JUMP_VELOCITY := -500.0
 @export var player_texture : Texture
 @export var tag_indicator : TextureRect
 @export var can_tag : bool = true
+@export var animation_player : AnimationPlayer
 
 @export_group("Player Changes")
 @export var jump : String
 @export var left : String
 @export var right : String
-@export var texture_rect : TextureRect
+@export var player_texture_rect : TextureRect
 
 
 func _ready() -> void:
-	texture_rect.texture = player_texture
+	player_texture_rect.texture = player_texture
 	update_indicator()
-	print(get_meta(TAGGER_META))
 
 
 func _physics_process(delta: float) -> void:
@@ -35,7 +47,17 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis(left, right)
 	if direction != 0:
-			texture_rect.flip_h = direction < 0
+			player_texture_rect.flip_h = direction < 0
+			player_texture_rect.position = PLAYER_TEXTURE_OFFSET_LOOKUP[int(direction)]
+			
+			if not animation_player.is_playing():
+				if direction < 0:
+					animation_player.play(WALK_LEFT)
+				else:
+					animation_player.play(WALK_RIGHT)
+			
+	else:
+		animation_player.stop()
 	
 	if direction:
 		velocity.x = direction * SPEED
@@ -44,9 +66,10 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	if get_meta(TAGGER_META, true):
-		SPEED = 310.0
+		SPEED = TAG_SPEED
 	else:
-		SPEED = 300.0
+		SPEED = NORMAL_SPEED
+
 
 func update_indicator():
 	tag_indicator.visible = get_meta(TAGGER_META)

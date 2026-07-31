@@ -3,15 +3,202 @@
 [ext_resource type="Script" uid="uid://bq11ug8pg6ocm" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cbaqfgpe264x4" path="res://assets/player_assets/tug_indicator.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://dxt054tjsjgxv" path="res://assets/player_assets/blue_character.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://cq870oxs34h5j" path="res://assets/player_assets/foot.png" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
 size = Vector2(30, 30)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1990145254 node_paths=PackedStringArray("tag_indicator", "texture_rect")]
+[sub_resource type="Animation" id="Animation_qlg0r"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("left:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(26, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("left:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("right:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(21, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("player_texture:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "walk_left"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(20, -0.13333333, -0.21974754, 0, 0, 10, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("left:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(26, -0.099999994, -0.011920929, 0, 0, 25, -0.11666666, 0.009672165, 0.050000012, 0.011920929, 26, -0.19999999, -0.036663055, 0.13333334, -0.009672165),
+"times": PackedFloat32Array(0, 0.25, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("left:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.13333333, 0.063661225, 0, 0, -0.56199604, -0.041666668, 0, 0.041666668, 0, 0, -0.25, 0, 0.16666667, 0.035817347),
+"times": PackedFloat32Array(0, 0.25, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("right:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(10, -0.26666665, 0.20535278, 0, 0, 21, -0.25, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("player_texture:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.23333333, 0.011995275, 0.087, -0.0496937, 0.001341907, 0.01666668, -0.00045005977, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.45, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "walk_right"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 13.999999, -0.049999997, -2.3101654, 0, 0, 20, -0.13333333, -0.21974754, 0, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("left:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(26, -0.25, 0, 0.13333334, -0.009672165, 25, -0.05, 0, 0.05, 0, 26, -0.099999994, -0.011920929, 0, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("left:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.16666667, 0.035817347, 0.5626995, -0.049999997, -0.0016453266, 0.049989033, 0.001644966, 0, -0.13333333, 0.063661225, 0, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("right:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(21, -0.25, 0, 0, 0, 10, -0.26666665, 0.20535278, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("player_texture:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.10564071, -0.002151587, -0.08723233, -0.0776926, -0.0009821653, 0, 0, 0, -0.0011515617, -0.080620706, 0, 0),
+"times": PackedFloat32Array(0, 0.45, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_smehm"]
+_data = {
+&"RESET": SubResource("Animation_qlg0r"),
+&"walk_left": SubResource("Animation_tuyoq"),
+&"walk_right": SubResource("Animation_fjrip")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1990145254 node_paths=PackedStringArray("tag_indicator", "animation_player", "player_texture_rect")]
 collision_layer = 2
 script = ExtResource("1_4flbx")
 tag_indicator = NodePath("indicator_texture")
-texture_rect = NodePath("player_texture")
+animation_player = NodePath("AnimationPlayer")
+player_texture_rect = NodePath("player_texture")
 metadata/tagger = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730235007]
@@ -30,11 +217,14 @@ shape = SubResource("RectangleShape2D_fh2hd")
 [node name="player_texture" type="TextureRect" parent="." unique_id=1959486713]
 z_index = 1
 texture_filter = 1
-offset_left = -5.0
-offset_top = -7.0
-offset_right = 30.0
-offset_bottom = 28.0
+offset_left = 1.0
+offset_top = -9.0
+offset_right = 36.0
+offset_bottom = 26.0
+pivot_offset = Vector2(2, 0)
+pivot_offset_ratio = Vector2(0.5, 0.6)
 texture = ExtResource("2_qhqgy")
+flip_h = true
 
 [node name="indicator_texture" type="TextureRect" parent="." unique_id=1001034]
 z_index = 2
@@ -46,6 +236,19 @@ offset_bottom = -8.0
 texture = ExtResource("2_g2els")
 stretch_mode = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1586266976]
+libraries/ = SubResource("AnimationLibrary_smehm")
+
+[node name="left" type="Sprite2D" parent="." unique_id=830343630]
+texture_filter = 1
+position = Vector2(10, 26)
+texture = ExtResource("4_dqkch")
+
+[node name="right" type="Sprite2D" parent="." unique_id=934880064]
+texture_filter = 1
+position = Vector2(21, 26)
+texture = ExtResource("4_dqkch")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

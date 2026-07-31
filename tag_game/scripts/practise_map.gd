@@ -29,7 +29,6 @@ func _process(_delta):
 		label.text = str(int(ceil(game_timer.time_left)))
 
 
-
 func _on_timer_timeout():
 	
 	if player_one.get_meta(TAGGER_META, false):
@@ -40,8 +39,3 @@ func _on_timer_timeout():
 		Player Two Loses!"
 	
 	get_tree().paused = true
-
-
-func _on_pause_button_pressed() -> void:
-	get_tree().paused = true
-	# Replace with function body.

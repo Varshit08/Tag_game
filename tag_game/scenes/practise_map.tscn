@@ -5,12 +5,16 @@
 [ext_resource type="FontFile" uid="uid://dlu2jcvfyp12d" path="res://fonts/Boring Time.otf" id="2_dont8"]
 [ext_resource type="Texture2D" uid="uid://dxt054tjsjgxv" path="res://assets/player_assets/blue_character.png" id="4_50rx3"]
 [ext_resource type="Texture2D" uid="uid://punwso1ggnib" path="res://assets/player_assets/red_character.png" id="5_v0fls"]
-[ext_resource type="Texture2D" uid="uid://cskrgj1vwv2wg" path="res://assets/player_assets/image 10.png" id="6_50rx3"]
 [ext_resource type="PackedScene" uid="uid://pws621ub2vlq" path="res://scenes/enviroment_scenes/large_platform.tscn" id="7_v0fls"]
+[ext_resource type="Texture2D" uid="uid://dfxsfk3pviyt5" path="res://assets/button_assets/pausebutton.png" id="8_tjm58"]
 [ext_resource type="PackedScene" uid="uid://dlms0d0eqpdla" path="res://scenes/enviroment_scenes/pink_flower.tscn" id="8_u2wpt"]
 [ext_resource type="PackedScene" uid="uid://cgnei4l4i1uxf" path="res://scenes/enviroment_scenes/medium_platform.tscn" id="9_eybdv"]
+[ext_resource type="Script" uid="uid://by30klqu7mk56" path="res://scripts/pause_button.gd" id="9_l4vec"]
 [ext_resource type="PackedScene" uid="uid://bepciqwfky7rr" path="res://scenes/enviroment_scenes/tiny_platform.tscn" id="10_h7crl"]
+[ext_resource type="Texture2D" uid="uid://bh7xrc1pdckhp" path="res://assets/maps/map_1_background.png" id="11_24gx4"]
 [ext_resource type="PackedScene" uid="uid://bmj3fiimwij2p" path="res://scenes/camera.tscn" id="11_eybdv"]
+[ext_resource type="Texture2D" uid="uid://cp44qkbt466ch" path="res://assets/maps/map_1_ground.png" id="12_vni48"]
+[ext_resource type="Texture2D" uid="uid://tp0y1qylo2yo" path="res://assets/maps/side_wall.png" id="13_tjm58"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h7crl"]
 distance = -15.0
@@ -25,6 +29,14 @@ normal = Vector2(1, 0)
 font = ExtResource("2_dont8")
 font_size = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdnyn"]
+bg_color = Color(1, 1, 1, 0.5882353)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fh2hd"]
+font = ExtResource("2_dont8")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
 [node name="root" type="Node2D" unique_id=38678437 node_paths=PackedStringArray("game_timer", "label", "player_one", "player_two")]
 script = ExtResource("1_yu8s3")
 set_time = 120
@@ -36,11 +48,11 @@ player_two = NodePath("playertwo")
 [node name="world_borders" type="StaticBody2D" parent="." unique_id=1464168639]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world_borders" unique_id=1420010681]
-position = Vector2(0, 621)
+position = Vector2(0, 614)
 shape = SubResource("WorldBoundaryShape2D_h7crl")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="world_borders" unique_id=1298087775]
-position = Vector2(2560, 0)
+position = Vector2(1750, 0)
 shape = SubResource("WorldBoundaryShape2D_eybdv")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="world_borders" unique_id=951273192]
@@ -62,18 +74,10 @@ right = "player_two_right"
 
 [node name="Camera2D" parent="." unique_id=1375332101 node_paths=PackedStringArray("player1", "player2") instance=ExtResource("11_eybdv")]
 position = Vector2(640, 360)
+position_smoothing_enabled = false
 player1 = NodePath("../playerone")
 player2 = NodePath("../playertwo")
-
-[node name="background" type="TextureRect" parent="." unique_id=647150374]
-z_index = -1
-offset_left = -109.00001
-offset_top = -84.0
-offset_right = 722.0
-offset_bottom = 381.0
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("6_50rx3")
-metadata/_edit_lock_ = true
+background_texture = ExtResource("11_24gx4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894652531]
 
@@ -88,7 +92,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=820989230]
+[node name="pause_menu" type="Control" parent="CanvasLayer" unique_id=820989230]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,9 +102,45 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="pause_button" type="Button" parent="CanvasLayer" unique_id=1669048415]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="pause_overlay" type="Panel" parent="CanvasLayer/pause_menu" unique_id=212268759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sdnyn")
+
+[node name="pause_text" type="Label" parent="CanvasLayer/pause_menu" unique_id=887455512]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "The game is paused"
+label_settings = SubResource("LabelSettings_fh2hd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pause_button" type="Button" parent="CanvasLayer" unique_id=1669048415 node_paths=PackedStringArray("pause_menu")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+icon = ExtResource("8_tjm58")
+flat = true
+script = ExtResource("9_l4vec")
+pause_menu = NodePath("../pause_menu")
 
 [node name="environment" type="Node" parent="." unique_id=1652752546]
 
@@ -255,8 +296,47 @@ offset_left = 217.0
 offset_top = 608.0
 offset_right = 233.0
 offset_bottom = 634.0
+metadata/_edit_use_anchors_ = true
+
+[node name="map" type="Node" parent="." unique_id=200379514]
+
+[node name="ground_1" type="TextureRect" parent="map" unique_id=128962562]
+offset_left = -306.0
+offset_top = 629.0
+offset_right = 1182.0
+offset_bottom = 767.0
+texture = ExtResource("12_vni48")
+
+[node name="ground_2" type="TextureRect" parent="map" unique_id=2075118894]
+offset_left = 1178.0
+offset_top = 629.0
+offset_right = 2666.0
+offset_bottom = 767.0
+texture = ExtResource("12_vni48")
+flip_h = true
+
+[node name="left_side" type="TextureRect" parent="map" unique_id=545154602]
+z_index = 1
+offset_left = -348.0
+offset_top = -750.0
+offset_right = -116.0
+offset_bottom = 275.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_tjm58")
+stretch_mode = 2
+
+[node name="right_side" type="TextureRect" parent="map" unique_id=206179627]
+z_index = 1
+offset_left = 1749.0
+offset_top = -750.0
+offset_right = 1981.0
+offset_bottom = 275.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_tjm58")
+stretch_mode = 2
 
 [node name="game_timer" type="Timer" parent="." unique_id=1445887463]
 wait_time = 120.0
 
+[connection signal="pressed" from="CanvasLayer/pause_button" to="CanvasLayer/pause_button" method="_on_pressed"]
 [connection signal="timeout" from="game_timer" to="." method="_on_timer_timeout"]
