@@ -10,40 +10,58 @@
 [ext_resource type="PackedScene" uid="uid://dlms0d0eqpdla" path="res://scenes/enviroment_scenes/pink_flower.tscn" id="8_u2wpt"]
 [ext_resource type="PackedScene" uid="uid://cgnei4l4i1uxf" path="res://scenes/enviroment_scenes/medium_platform.tscn" id="9_eybdv"]
 [ext_resource type="PackedScene" uid="uid://bepciqwfky7rr" path="res://scenes/enviroment_scenes/tiny_platform.tscn" id="10_h7crl"]
+[ext_resource type="Script" uid="uid://b4mvp4t0kihsb" path="res://scripts/pause_menu.gd" id="11_24gx4"]
 [ext_resource type="PackedScene" uid="uid://bmj3fiimwij2p" path="res://scenes/camera.tscn" id="11_eybdv"]
-[ext_resource type="Script" uid="uid://c8jgndltfa28u" path="res://scenes/pause_button.gd" id="11_h7crl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
-size = Vector2(1248, 136.25)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sdnyn"]
-normal = Vector2(-1, 0)
+[ext_resource type="Texture2D" uid="uid://dfxsfk3pviyt5" path="res://assets/button_assets/pausebutton.png" id="13_24gx4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nuh0o"]
 normal = Vector2(1, 0)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vni48"]
+distance = 86.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sdnyn"]
+normal = Vector2(-1, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdnyn"]
-bg_color = Color(0.218301, 0.218301, 0.21830091, 1)
+bg_color = Color(1, 1, 1, 0.6392157)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sdnyn"]
+font = ExtResource("2_dont8")
+font_size = 64
+font_color = Color(5.1608413e-06, 5.160842e-06, 5.1608413e-06, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2ohw"]
 font = ExtResource("2_dont8")
 font_size = 50
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=961243516 node_paths=PackedStringArray("timer", "label", "player_one", "player_two")]
+[node name="root" type="Node2D" unique_id=1027094450 node_paths=PackedStringArray("game_timer", "timer_label", "player_one", "player_two")]
 script = ExtResource("1_yu8s3")
-set_time = 120
-timer = NodePath("Timer")
-label = NodePath("CanvasLayer/Label")
+set_time = 10
+game_timer = NodePath("game_timer")
+timer_label = NodePath("CanvasLayer/timer_label")
 player_one = NodePath("playerone")
 player_two = NodePath("playertwo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1420010681]
-position = Vector2(571, 702.125)
-shape = SubResource("RectangleShape2D_fh2hd")
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=856065928]
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1298087775]
+[node name="left" type="CollisionShape2D" parent="StaticBody2D" unique_id=951273192]
+shape = SubResource("WorldBoundaryShape2D_nuh0o")
+
+[node name="floor" type="CollisionShape2D" parent="StaticBody2D" unique_id=1420010681]
+position = Vector2(0, 720)
+shape = SubResource("WorldBoundaryShape2D_vni48")
+
+[node name="right" type="CollisionShape2D" parent="StaticBody2D" unique_id=1298087775]
 position = Vector2(1152, 0)
 shape = SubResource("WorldBoundaryShape2D_sdnyn")
+
+[node name="Camera2D" parent="." unique_id=1375332101 node_paths=PackedStringArray("player1", "player2") instance=ExtResource("11_eybdv")]
+position = Vector2(640, 360)
+player1 = NodePath("../playerone")
+player2 = NodePath("../playertwo")
+metadata/_edit_lock_ = true
 
 [node name="playerone" parent="." unique_id=1990145254 instance=ExtResource("1_0nps2")]
 position = Vector2(37, 570)
@@ -51,6 +69,7 @@ player_texture = ExtResource("4_50rx3")
 jump = "player_one_jump"
 left = "player_one_left"
 right = "player_one_right"
+metadata/_edit_lock_ = true
 
 [node name="playertwo" parent="." unique_id=1996809327 instance=ExtResource("1_0nps2")]
 position = Vector2(1115, 569)
@@ -58,26 +77,15 @@ player_texture = ExtResource("5_v0fls")
 jump = "player_two_jump"
 left = "player_two_left"
 right = "player_two_right"
+metadata/_edit_lock_ = true
 
-[node name="Timer" type="Timer" parent="." unique_id=1445887463]
-wait_time = 120.0
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=951273192]
-shape = SubResource("WorldBoundaryShape2D_nuh0o")
-
-[node name="Image10" type="Sprite2D" parent="." unique_id=420537243]
+[node name="backdrop" type="Sprite2D" parent="." unique_id=420537243]
 z_index = -1
-position = Vector2(577.38617, 370.58713)
-scale = Vector2(1.3862816, 1.5870967)
+position = Vector2(666, 366)
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("6_50rx3")
 offset = Vector2(-1, -1)
 metadata/_edit_lock_ = true
-
-[node name="TextureRect" parent="." unique_id=24437237 instance=ExtResource("8_u2wpt")]
-offset_left = 226.0
-offset_top = 609.0
-offset_right = 242.0
-offset_bottom = 635.0
 
 [node name="environment" type="Node" parent="." unique_id=1652752546]
 
@@ -228,32 +236,69 @@ position = Vector2(49, 282)
 [node name="medium_platform2" parent="environment" unique_id=730459651 instance=ExtResource("9_eybdv")]
 position = Vector2(146, 201)
 
-[node name="Camera2D" parent="." unique_id=1375332101 node_paths=PackedStringArray("player1", "player2") instance=ExtResource("11_eybdv")]
-position = Vector2(576, 324)
-player1 = NodePath("../playerone")
-player2 = NodePath("../playertwo")
+[node name="pink_flower" parent="environment" unique_id=24437237 instance=ExtResource("8_u2wpt")]
+offset_left = 226.0
+offset_top = 609.0
+offset_right = 242.0
+offset_bottom = 635.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894652531]
 
-[node name="pause_button" type="Label" parent="CanvasLayer" unique_id=2013061642]
-light_mask = 512
-visibility_layer = 512
-offset_top = 579.0
-offset_right = 1152.0
-offset_bottom = 648.0
-theme_override_font_sizes/font_size = 29
-theme_override_styles/focus = SubResource("StyleBoxFlat_sdnyn")
-text = "Pause"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("11_h7crl")
+[node name="pause_menu" type="Control" parent="CanvasLayer" unique_id=181090672]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_24gx4")
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=1966233753]
-anchors_preset = 5
+[node name="Panel" type="Panel" parent="CanvasLayer/pause_menu" unique_id=24876215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sdnyn")
+metadata/_edit_use_anchors_ = true
+
+[node name="pause_label" type="Label" parent="CanvasLayer/pause_menu" unique_id=448837555]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -575.5
-offset_right = 575.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -11.5
+offset_right = 94.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You are currenly paused"
+label_settings = SubResource("LabelSettings_sdnyn")
+
+[node name="pause_button" type="Button" parent="CanvasLayer" unique_id=1735333977]
+z_index = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -58.0
+offset_right = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+icon = ExtResource("13_24gx4")
+flat = true
+
+[node name="timer_label" type="Label" parent="CanvasLayer" unique_id=1966233753]
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 61.0
 grow_horizontal = 2
 text = "120"
@@ -261,4 +306,6 @@ label_settings = SubResource("LabelSettings_p2ohw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="game_timer" type="Timer" parent="." unique_id=882333012]
+
+[connection signal="pressed" from="CanvasLayer/pause_button" to="CanvasLayer/pause_menu" method="_on_pause_button_pressed"]
