@@ -193,11 +193,12 @@ _data = {
 &"walk_right": SubResource("Animation_fjrip")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1990145254 node_paths=PackedStringArray("tag_indicator", "animation_player", "player_texture_rect")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1990145254 node_paths=PackedStringArray("tag_indicator", "animation_player", "speed_timer", "player_texture_rect")]
 collision_layer = 2
 script = ExtResource("1_4flbx")
 tag_indicator = NodePath("indicator_texture")
 animation_player = NodePath("AnimationPlayer")
+speed_timer = NodePath("speed_boost_timer")
 player_texture_rect = NodePath("player_texture")
 metadata/tagger = false
 
@@ -250,5 +251,8 @@ texture_filter = 1
 position = Vector2(21, 26)
 texture = ExtResource("4_dqkch")
 
+[node name="speed_boost_timer" type="Timer" parent="." unique_id=1103858375]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="speed_boost_timer" to="." method="_on_speed_boost_timer_timeout"]

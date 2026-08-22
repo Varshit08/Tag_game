@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bmj3fiimwij2p" path="res://scenes/camera.tscn" id="11_eybdv"]
 [ext_resource type="Texture2D" uid="uid://cp44qkbt466ch" path="res://assets/maps/map_1_ground.png" id="12_vni48"]
 [ext_resource type="Texture2D" uid="uid://tp0y1qylo2yo" path="res://assets/maps/side_wall.png" id="13_tjm58"]
+[ext_resource type="PackedScene" uid="uid://dg553a6a1ucqd" path="res://scenes/speed_powerup.tscn" id="16_l4vec"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h7crl"]
 distance = -15.0
@@ -337,6 +338,9 @@ stretch_mode = 2
 
 [node name="game_timer" type="Timer" parent="." unique_id=1445887463]
 wait_time = 120.0
+
+[node name="Area2D" parent="." unique_id=1875544475 instance=ExtResource("16_l4vec")]
+position = Vector2(487, 567)
 
 [connection signal="pressed" from="CanvasLayer/pause_button" to="CanvasLayer/pause_button" method="_on_pressed"]
 [connection signal="timeout" from="game_timer" to="." method="_on_timer_timeout"]

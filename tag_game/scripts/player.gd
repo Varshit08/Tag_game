@@ -1,3 +1,4 @@
+class_name player
 extends CharacterBody2D
 
 const TAGGER_META := "tagger"
@@ -14,19 +15,28 @@ const WALK_LEFT := "walk_left"
 const NORMAL_SPEED := 300.0
 const TAG_SPEED := 310.0
 
-var SPEED := 300.0
-var JUMP_VELOCITY := -500.0
+# Power Ups
+const SPEED_POWER_BOOST := 1.3
+const SPEED_POWER_TIME := 5
 
 @export var player_texture : Texture
 @export var tag_indicator : TextureRect
 @export var can_tag : bool = true
 @export var animation_player : AnimationPlayer
 
+@export_group("Power Up Timers")
+@export var speed_timer : Timer
+
 @export_group("Player Changes")
 @export var jump : String
 @export var left : String
 @export var right : String
 @export var player_texture_rect : TextureRect
+
+var SPEED := 300.0
+var JUMP_VELOCITY := -500.0
+
+var speed_boost_active := false
 
 
 func _ready() -> void:
@@ -35,7 +45,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# Add the gravity.x
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -60,7 +70,7 @@ func _physics_process(delta: float) -> void:
 		animation_player.stop()
 	
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * SPEED * max(SPEED_POWER_BOOST * int(speed_boost_active), 1)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
@@ -99,3 +109,14 @@ func reset_can_tag():
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	can_tag = true
 	body.reset_can_tag()
+
+
+# Power ups ------------------------------------------------------------------
+func speed_boost_start() -> void:
+	speed_boost_active = true
+	
+	speed_timer.start(SPEED_POWER_TIME)
+
+
+func _on_speed_boost_timer_timeout() -> void:
+	speed_boost_active = false

@@ -1,6 +1,9 @@
 extends Node
 
 const TAGGER_META := "tagger"
+const LOST_LABEL := "Time Is Up! /n Player %s Loses!"
+const PLAYER_ONE_TEXT := "One"
+const PLAYER_TWO_TEXT := "Two"
 
 @export var set_time : int
 @export var game_timer : Timer
@@ -30,12 +33,11 @@ func _process(_delta):
 
 
 func _on_timer_timeout():
+	var lost_player : String
 	
 	if player_one.get_meta(TAGGER_META, false):
-		label.text = "Time Is Up!
-		 Player One Loses!"
-	elif player_two.get_meta(TAGGER_META, false):
-		label.text = "Time Is Up!
-		Player Two Loses!"
+		lost_player  = PLAYER_ONE_TEXT
+	else:
+		lost_player  = PLAYER_TWO_TEXT
 	
 	get_tree().paused = true
