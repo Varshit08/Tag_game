@@ -14,10 +14,21 @@ const WALK_LEFT := "walk_left"
 
 const NORMAL_SPEED := 300.0
 const TAG_SPEED := 310.0
+const JUMP_VELOCITY := -500.0
 
 # Power Ups
+# Speed multipul
 const SPEED_POWER_BOOST := 1.3
 const SPEED_POWER_TIME := 5
+
+# Jump Height Additive
+const JUMP_POWER_BOOST := -250
+const JUMP_POWER_TIME := 5
+
+# Invis Powerup
+const INVIS_MODULATE := Color(1.0, 1.0, 1.0, 0.200)
+const NORMAL_MODULATE := Color(1, 1, 1, 1)
+const INVIS_TIME := 5
 
 @export var player_texture : Texture
 @export var tag_indicator : TextureRect
@@ -26,6 +37,8 @@ const SPEED_POWER_TIME := 5
 
 @export_group("Power Up Timers")
 @export var speed_timer : Timer
+@export var jump_timer : Timer
+@export var invis_timer : Timer
 
 @export_group("Player Changes")
 @export var jump : String
@@ -33,10 +46,10 @@ const SPEED_POWER_TIME := 5
 @export var right : String
 @export var player_texture_rect : TextureRect
 
-var SPEED := 300.0
-var JUMP_VELOCITY := -500.0
-
 var speed_boost_active := false
+var jump_boost_active := false
+var invis_boost_active := false
+var speed = NORMAL_SPEED
 
 
 func _ready() -> void:
@@ -51,7 +64,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed(jump) and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY + min(JUMP_POWER_BOOST * int(jump_boost_active), -1)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -70,15 +83,15 @@ func _physics_process(delta: float) -> void:
 		animation_player.stop()
 	
 	if direction:
-		velocity.x = direction * SPEED * max(SPEED_POWER_BOOST * int(speed_boost_active), 1)
+		velocity.x = direction * speed * max(SPEED_POWER_BOOST * int(speed_boost_active), 1)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 	
 	move_and_slide()
 	if get_meta(TAGGER_META, true):
-		SPEED = TAG_SPEED
+		speed = TAG_SPEED
 	else:
-		SPEED = NORMAL_SPEED
+		speed = NORMAL_SPEED
 
 
 func update_indicator():
@@ -120,3 +133,25 @@ func speed_boost_start() -> void:
 
 func _on_speed_boost_timer_timeout() -> void:
 	speed_boost_active = false
+
+
+func jump_boost_start() -> void:
+	jump_boost_active = true
+	
+	jump_timer.start(JUMP_POWER_TIME)
+
+
+func _on_jump_boost_timer_timeout() -> void:
+	jump_boost_active = false
+
+
+func invis_boost_start() -> void:
+	invis_boost_active = true
+	modulate = INVIS_MODULATE
+	
+	invis_timer.start(INVIS_TIME)
+
+
+func _on_invis_boost_timer_timeout() -> void:
+	invis_boost_active = true
+	modulate = NORMAL_MODULATE

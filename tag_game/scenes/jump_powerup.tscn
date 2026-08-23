@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://dg553a6a1ucqd"]
+[gd_scene format=3 uid="uid://cle04a66iyd5b"]
 
-[ext_resource type="Script" uid="uid://dojtsxaxqv3o4" path="res://scripts/speed_power.gd" id="1_7p3yj"]
+[ext_resource type="Script" uid="uid://bq51usmmmbyyf" path="res://scripts/jump_power.gd" id="1_tpfot"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdnyn"]
 
-[node name="speed_powerup" type="Area2D" unique_id=1875544475]
+[node name="jump_powerup" type="Area2D" unique_id=1875544475]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_7p3yj")
+script = ExtResource("1_tpfot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1158659208]
 shape = SubResource("CircleShape2D_sdnyn")
@@ -17,6 +17,6 @@ offset_left = -7.0
 offset_top = -7.0
 offset_right = 7.0
 offset_bottom = 7.0
-color = Color(0.44313726, 1, 1, 1)
+color = Color(0.44313726, 1, 0.6156863, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

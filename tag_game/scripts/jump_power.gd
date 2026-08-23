@@ -11,6 +11,6 @@ var picked_up := false
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_meta(TAGGER_META) and not picked_up:
 		picked_up = true
-		body.speed_boost_start()
+		body.jump_boost_start()
 		spawner.power_up_pickup(marker)
 		queue_free()
