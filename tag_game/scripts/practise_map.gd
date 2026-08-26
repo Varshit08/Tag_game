@@ -1,20 +1,41 @@
 extends Node
 
 const TAGGER_META := "tagger"
-const LOST_LABEL := "Time Is Up! /n Player %s Loses!"
+const WON_PLAYER_TEXT := "Player %s Wins!"
 const PLAYER_ONE_TEXT := "One"
 const PLAYER_TWO_TEXT := "Two"
 
-@export var set_time : int
-@export var game_timer : Timer
-@export var label : Label
+@export_group("Player Related")
 @export var player_one : CharacterBody2D
 @export var player_two : CharacterBody2D
+@export var player_one_spawn : Marker2D
+@export var player_two_spawn : Marker2D
+
+@export_group("Game Logic")
+@export var set_time : int
+@export var game_timer : Timer
+@export var game_time_label : Label
+
+@export_group("Play Again UI")
+@export var play_again_control : Control
+@export var player_won_label : Label
 
 
 func _ready():
-	randomize()
-	game_timer.start(set_time)
+	_start_game(set_time)
+
+ 
+func _process(_delta):
+	if !get_tree().paused:
+		game_time_label.text = str(int(ceil(game_timer.time_left)))
+
+
+func _start_game(time : int) -> void:
+	Global.game_running = true
+	game_timer.start(time)
+	
+	player_one.global_position = player_one_spawn.global_position
+	player_two.global_position = player_two_spawn.global_position
 	
 	if randi() % 2 == 0:
 		player_one.set_meta(TAGGER_META, true)
@@ -27,17 +48,15 @@ func _ready():
 	player_two.update_indicator()
 
 
-func _process(_delta):
-	if !get_tree().paused:
-		label.text = str(int(ceil(game_timer.time_left)))
-
-
 func _on_timer_timeout():
-	var lost_player : String
+	get_tree().paused = true
+	Global.game_running = false
+	play_again_control.visible = true
+	var won_player : String
 	
 	if player_one.get_meta(TAGGER_META, false):
-		lost_player  = PLAYER_ONE_TEXT
+		won_player = PLAYER_TWO_TEXT
 	else:
-		lost_player  = PLAYER_TWO_TEXT
+		won_player = PLAYER_ONE_TEXT
 	
-	get_tree().paused = true
+	player_won_label.text = WON_PLAYER_TEXT % won_player

@@ -2,8 +2,8 @@ extends Camera2D
 
 const MISSING_PLAYER_ASSIGNMENT := "players not assigned"
 
-const MIN_X := 0.0
-const MAX_X := 3456.0
+const MIN_X := -200.0
+const MAX_X := 1950.0
 const MAX_Y := 720.0
 
 const MIN_ZOOM := 0.6
