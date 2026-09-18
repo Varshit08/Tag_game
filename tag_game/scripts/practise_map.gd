@@ -15,6 +15,7 @@ const PLAYER_TWO_TEXT := "Two"
 @export var set_time : int
 @export var game_timer : Timer
 @export var game_time_label : Label
+@export var pause_button : Button
 
 @export_group("Play Again UI")
 @export var play_again_control : Control
@@ -52,6 +53,7 @@ func _on_timer_timeout():
 	get_tree().paused = true
 	Global.game_running = false
 	play_again_control.visible = true
+	pause_button.visible = false
 	var won_player : String
 	
 	if player_one.get_meta(TAGGER_META, false):

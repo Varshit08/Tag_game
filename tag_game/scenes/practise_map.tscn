@@ -43,36 +43,10 @@ font = ExtResource("2_dont8")
 font_size = 48
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmu2j"]
-bg_color = Color(1, 1, 1, 0.44313726)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(1, 1, 1, 0)
-border_blend = true
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-corner_detail = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjm58"]
-bg_color = Color(1, 1, 1, 0.5803922)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(1, 1, 1, 0)
-border_blend = true
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-corner_detail = 12
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4vec"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4vec"]
-bg_color = Color(1, 1, 1, 0.44313726)
+bg_color = Color(1, 1, 1, 0.5568628)
 border_width_left = 16
 border_width_top = 16
 border_width_right = 16
@@ -106,15 +80,16 @@ font = ExtResource("2_dont8")
 font_size = 18
 font_color = Color(0, 0, 0, 1)
 
-[node name="root" type="Node2D" unique_id=38678437 node_paths=PackedStringArray("player_one", "player_two", "player_one_spawn", "player_two_spawn", "game_timer", "game_time_label", "play_again_control", "player_won_label")]
+[node name="root" type="Node2D" unique_id=38678437 node_paths=PackedStringArray("player_one", "player_two", "player_one_spawn", "player_two_spawn", "game_timer", "game_time_label", "pause_button", "play_again_control", "player_won_label")]
 script = ExtResource("1_yu8s3")
 player_one = NodePath("playerone")
 player_two = NodePath("playertwo")
 player_one_spawn = NodePath("player_spawns/player_one")
 player_two_spawn = NodePath("player_spawns/player_two")
-set_time = 10
+set_time = 30
 game_timer = NodePath("game_timer")
 game_time_label = NodePath("CanvasLayer/game_timer")
+pause_button = NodePath("CanvasLayer/pause_button")
 play_again_control = NodePath("CanvasLayer/end_menu")
 player_won_label = NodePath("CanvasLayer/end_menu/player_won_label")
 
@@ -419,8 +394,7 @@ label_settings = SubResource("LabelSettings_fh2hd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="end_menu" type="Control" parent="CanvasLayer" unique_id=1154506278 node_paths=PackedStringArray("scene_root", "time_display")]
-visible = false
+[node name="end_menu" type="Control" parent="CanvasLayer" unique_id=1154506278 node_paths=PackedStringArray("scene_root", "time_display", "pause_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -430,6 +404,7 @@ grow_vertical = 2
 script = ExtResource("14_l4vec")
 scene_root = NodePath("../..")
 time_display = NodePath("VBoxContainer/HBoxContainer/time_display")
+pause_button = NodePath("../pause_button")
 metadata/_edit_use_anchors_ = true
 
 [node name="end_overlay" type="Panel" parent="CanvasLayer/end_menu" unique_id=1384842511]
@@ -471,8 +446,9 @@ offset_right = 128.0
 offset_bottom = 31.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xmu2j")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tjm58")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l4vec")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vec")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l4vec")
 
 [node name="play_again_text" type="Label" parent="CanvasLayer/end_menu/play_again_button" unique_id=740215254]
