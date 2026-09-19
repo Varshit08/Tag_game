@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cle04a66iyd5b"]
 
 [ext_resource type="Script" uid="uid://bq51usmmmbyyf" path="res://scripts/jump_power.gd" id="1_tpfot"]
+[ext_resource type="Texture2D" uid="uid://cgluia8i0kdxn" path="res://assets/powerups/Jump Power Up.png" id="2_i8jae"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdnyn"]
 
@@ -12,11 +13,22 @@ script = ExtResource("1_tpfot")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1158659208]
 shape = SubResource("CircleShape2D_sdnyn")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=870802989]
-offset_left = -7.0
-offset_top = -7.0
-offset_right = 7.0
-offset_bottom = 7.0
-color = Color(0.44313726, 1, 0.6156863, 1)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=511759493]
+texture_filter = 1
+custom_minimum_size = Vector2(18, 18)
+custom_maximum_size = Vector2(18, 18)
+propagate_maximum_size = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_i8jae")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

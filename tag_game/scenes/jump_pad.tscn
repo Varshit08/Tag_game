@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cm07n2tv1887t"]
+
+[ext_resource type="Script" uid="uid://ccxy5em22xxrk" path="res://scripts/jump_pad.gd" id="1_7e8al"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(40, 20)
+
+[node name="Area2D" type="Area2D" unique_id=559900819]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7e8al")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1570514023]
+position = Vector2(20, 10)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=311775924]
+offset_right = 40.0
+offset_bottom = 20.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

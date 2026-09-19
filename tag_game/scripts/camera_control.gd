@@ -3,12 +3,12 @@ extends Camera2D
 const MISSING_PLAYER_ASSIGNMENT := "players not assigned"
 
 const MIN_X := -200.0
-const MAX_X := 1950.0
-const MAX_Y := 720.0
+const MAX_X := 2350.0
+const MAX_Y := 900.0
 
-const MIN_ZOOM := 0.6
+const MIN_ZOOM := 0.5
 const MAX_ZOOM := 3.0
-const PADDING := 300.0
+const PADDING := 500.0
 const SMOOTH_SPEED := 5.0
 
 @export var player1 : CharacterBody2D

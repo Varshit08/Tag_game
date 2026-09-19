@@ -22,8 +22,8 @@ const PLAYER_TWO_TEXT := "Two"
 @export var player_won_label : Label
 
 
-func _ready():
-	_start_game(set_time)
+func _ready() -> void:
+	get_tree().paused = true
 
  
 func _process(_delta):

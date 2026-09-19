@@ -5,17 +5,16 @@
 [ext_resource type="FontFile" uid="uid://dlu2jcvfyp12d" path="res://fonts/Boring Time.otf" id="2_dont8"]
 [ext_resource type="Texture2D" uid="uid://dxt054tjsjgxv" path="res://assets/player_assets/blue_character.png" id="4_50rx3"]
 [ext_resource type="Texture2D" uid="uid://punwso1ggnib" path="res://assets/player_assets/red_character.png" id="5_v0fls"]
-[ext_resource type="PackedScene" uid="uid://pws621ub2vlq" path="res://scenes/enviroment_scenes/large_platform.tscn" id="7_v0fls"]
+[ext_resource type="Texture2D" uid="uid://1qumfbrrl4rw" path="res://assets/maps/extra_ground.png" id="7_vni48"]
 [ext_resource type="Texture2D" uid="uid://dfxsfk3pviyt5" path="res://assets/button_assets/pausebutton.png" id="8_tjm58"]
-[ext_resource type="PackedScene" uid="uid://dlms0d0eqpdla" path="res://scenes/enviroment_scenes/pink_flower.tscn" id="8_u2wpt"]
-[ext_resource type="PackedScene" uid="uid://cgnei4l4i1uxf" path="res://scenes/enviroment_scenes/medium_platform.tscn" id="9_eybdv"]
 [ext_resource type="Script" uid="uid://by30klqu7mk56" path="res://scripts/pause_button.gd" id="9_l4vec"]
-[ext_resource type="PackedScene" uid="uid://bepciqwfky7rr" path="res://scenes/enviroment_scenes/tiny_platform.tscn" id="10_h7crl"]
 [ext_resource type="Texture2D" uid="uid://bh7xrc1pdckhp" path="res://assets/maps/map_1_background.png" id="11_24gx4"]
 [ext_resource type="PackedScene" uid="uid://bmj3fiimwij2p" path="res://scenes/camera.tscn" id="11_eybdv"]
 [ext_resource type="Texture2D" uid="uid://cp44qkbt466ch" path="res://assets/maps/map_1_ground.png" id="12_vni48"]
 [ext_resource type="Texture2D" uid="uid://tp0y1qylo2yo" path="res://assets/maps/side_wall.png" id="13_tjm58"]
 [ext_resource type="Script" uid="uid://cnveiowwbj2md" path="res://scripts/end_menu.gd" id="14_l4vec"]
+[ext_resource type="Texture2D" uid="uid://d4meucn6wt65e" path="res://assets/maps/map_one_paths.png" id="14_vni48"]
+[ext_resource type="PackedScene" uid="uid://cm07n2tv1887t" path="res://scenes/jump_pad.tscn" id="15_tjm58"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h7crl"]
 distance = -15.0
@@ -25,6 +24,51 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sdnyn"]
 normal = Vector2(1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(119.58057, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjm58"]
+size = Vector2(190.16573, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4vec"]
+size = Vector2(255.67181, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmu2j"]
+size = Vector2(192.38206, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8p1p"]
+size = Vector2(319.19107, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0k4l6"]
+size = Vector2(343.59558, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3d4f"]
+size = Vector2(507.79785, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4g5n"]
+size = Vector2(213.89893, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyw1q"]
+size = Vector2(302.94946, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bsfs"]
+size = Vector2(345.00006, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1wfh"]
+size = Vector2(212.73737, 27.581055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vskl2"]
+size = Vector2(492.3688, 25.790537)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqx40"]
+size = Vector2(438.1844, 25.790537)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frnlm"]
+size = Vector2(344.09213, 25.790537)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jquao"]
+size = Vector2(213.47473, 27.581055)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2ohw"]
 font = ExtResource("2_dont8")
@@ -102,13 +146,135 @@ shape = SubResource("WorldBoundaryShape2D_h7crl")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="world_borders" unique_id=1298087775]
-position = Vector2(1750, 0)
+position = Vector2(2179, 0)
 shape = SubResource("WorldBoundaryShape2D_eybdv")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="world_borders" unique_id=951273192]
 shape = SubResource("WorldBoundaryShape2D_sdnyn")
 metadata/_edit_lock_ = true
+
+[node name="platforms" type="StaticBody2D" parent="." unique_id=2004990534]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms" unique_id=1267886542]
+position = Vector2(170.35114, 422.94385)
+rotation = 0.40142572
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="platforms" unique_id=2045801643]
+position = Vector2(311, 423)
+rotation = 0.40142572
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="platforms" unique_id=1251960837]
+position = Vector2(456, 423.00003)
+rotation = 0.40142572
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="platforms" unique_id=1911972718]
+position = Vector2(60.83583, -60.070778)
+rotation = 0.34906584
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_tjm58")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="platforms" unique_id=8885937]
+position = Vector2(533.637, 68.477104)
+rotation = 0.26179937
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_l4vec")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="platforms" unique_id=1931053749]
+position = Vector2(1278.4335, 204.80974)
+rotation = 0.26179934
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_xmu2j")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="platforms" unique_id=1733344925]
+position = Vector2(249.40448, 180.00002)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_h8p1p")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="platforms" unique_id=1285656135]
+position = Vector2(615.20233, 294.00003)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_0k4l6")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="platforms" unique_id=756077293]
+position = Vector2(836.10114, 519)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_o3d4f")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="platforms" unique_id=1516787719]
+position = Vector2(1300.0505, 452)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_m4g5n")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="platforms" unique_id=1261476070]
+position = Vector2(1514.0001, 345.00003)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_m4g5n")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="platforms" unique_id=866817685]
+position = Vector2(2032.5253, 520)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_kyw1q")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="platforms" unique_id=1372198811]
+position = Vector2(2129, 404)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_kyw1q")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="platforms" unique_id=1775932468]
+position = Vector2(1910.4999, 232.00002)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_8bsfs")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="platforms" unique_id=2131147563]
+position = Vector2(1923, -115)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_o1wfh")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="platforms" unique_id=1346555066]
+position = Vector2(1643, -47)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_o1wfh")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="platforms" unique_id=347101357]
+position = Vector2(1227, 47)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_vskl2")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="platforms" unique_id=242798832]
+position = Vector2(971.90784, 180.99998)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_dqx40")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="platforms" unique_id=2139462155]
+position = Vector2(705.00006, -55)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_dqx40")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="platforms" unique_id=1957165422]
+position = Vector2(288.95398, -137.00002)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_frnlm")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="platforms" unique_id=1371711294]
+position = Vector2(2205, -9.000001)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_kyw1q")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="platforms" unique_id=358557131]
+position = Vector2(1976, 112)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_jquao")
+
+[node name="Camera2D" parent="." unique_id=1375332101 node_paths=PackedStringArray("player1", "player2") instance=ExtResource("11_eybdv")]
+position = Vector2(640, 360)
+position_smoothing_enabled = false
+player1 = NodePath("../playerone")
+player2 = NodePath("../playertwo")
+background_texture = ExtResource("11_24gx4")
 
 [node name="playerone" parent="." unique_id=1990145254 instance=ExtResource("1_0nps2")]
 position = Vector2(37, 570)
@@ -118,184 +284,36 @@ left = "player_one_left"
 right = "player_one_right"
 
 [node name="playertwo" parent="." unique_id=1996809327 instance=ExtResource("1_0nps2")]
-position = Vector2(1115, 569)
+position = Vector2(2105, 572)
 player_texture = ExtResource("5_v0fls")
 jump = "player_two_jump"
 left = "player_two_left"
 right = "player_two_right"
 
-[node name="Camera2D" parent="." unique_id=1375332101 node_paths=PackedStringArray("player1", "player2") instance=ExtResource("11_eybdv")]
-position = Vector2(640, 360)
-position_smoothing_enabled = false
-player1 = NodePath("../playerone")
-player2 = NodePath("../playertwo")
-background_texture = ExtResource("11_24gx4")
-
 [node name="player_spawns" type="Node" parent="." unique_id=264871322]
 
 [node name="player_one" type="Marker2D" parent="player_spawns" unique_id=358946023]
-position = Vector2(37, 570)
+position = Vector2(200, 570)
 
 [node name="player_two" type="Marker2D" parent="player_spawns" unique_id=55858025]
-position = Vector2(1197, 570)
-
-[node name="environment" type="Node" parent="." unique_id=1652752546]
-
-[node name="tiny_platform" parent="environment" unique_id=879688137 instance=ExtResource("10_h7crl")]
-position = Vector2(636, 542)
-
-[node name="medium_platform7" parent="environment" unique_id=4246535 instance=ExtResource("9_eybdv")]
-position = Vector2(-3, 350)
-
-[node name="medium_platform12" parent="environment" unique_id=55871461 instance=ExtResource("9_eybdv")]
-position = Vector2(205, 350)
-
-[node name="medium_platform20" parent="environment" unique_id=622484315 instance=ExtResource("9_eybdv")]
-position = Vector2(132, 350)
-
-[node name="medium_platform19" parent="environment" unique_id=695583030 instance=ExtResource("9_eybdv")]
-position = Vector2(65, 350)
-
-[node name="medium_platform9" parent="environment" unique_id=1185391713 instance=ExtResource("9_eybdv")]
-position = Vector2(729, 281)
-
-[node name="medium_platform13" parent="environment" unique_id=98403396 instance=ExtResource("9_eybdv")]
-position = Vector2(937, 281)
-
-[node name="medium_platform21" parent="environment" unique_id=1011975461 instance=ExtResource("9_eybdv")]
-position = Vector2(864, 281)
-
-[node name="medium_platform22" parent="environment" unique_id=1525136137 instance=ExtResource("9_eybdv")]
-position = Vector2(797, 281)
-
-[node name="large_platform8" parent="environment" unique_id=1992033459 instance=ExtResource("7_v0fls")]
-position = Vector2(-4, 129)
-
-[node name="large_platform33" parent="environment" unique_id=1027075420 instance=ExtResource("7_v0fls")]
-position = Vector2(79, 543)
-
-[node name="large_platform34" parent="environment" unique_id=481981320 instance=ExtResource("7_v0fls")]
-position = Vector2(165, 543)
-
-[node name="large_platform35" parent="environment" unique_id=73893273 instance=ExtResource("7_v0fls")]
-position = Vector2(226, 543)
-
-[node name="large_platform39" parent="environment" unique_id=1497231648 instance=ExtResource("7_v0fls")]
-position = Vector2(295, 452)
-
-[node name="large_platform40" parent="environment" unique_id=217767966 instance=ExtResource("7_v0fls")]
-position = Vector2(381, 452)
-
-[node name="large_platform41" parent="environment" unique_id=1898874709 instance=ExtResource("7_v0fls")]
-position = Vector2(421, 452)
-
-[node name="large_platform45" parent="environment" unique_id=961928469 instance=ExtResource("7_v0fls")]
-position = Vector2(715, 446)
-
-[node name="large_platform46" parent="environment" unique_id=1922475022 instance=ExtResource("7_v0fls")]
-position = Vector2(801, 446)
-
-[node name="large_platform47" parent="environment" unique_id=1310903425 instance=ExtResource("7_v0fls")]
-position = Vector2(841, 446)
-
-[node name="large_platform48" parent="environment" unique_id=326043514 instance=ExtResource("7_v0fls")]
-position = Vector2(702, 77)
-
-[node name="large_platform49" parent="environment" unique_id=754415244 instance=ExtResource("7_v0fls")]
-position = Vector2(788, 77)
-
-[node name="large_platform50" parent="environment" unique_id=1111249188 instance=ExtResource("7_v0fls")]
-position = Vector2(828, 77)
-
-[node name="large_platform51" parent="environment" unique_id=2074164117 instance=ExtResource("7_v0fls")]
-position = Vector2(345, 75)
-
-[node name="large_platform52" parent="environment" unique_id=523505940 instance=ExtResource("7_v0fls")]
-position = Vector2(431, 75)
-
-[node name="large_platform53" parent="environment" unique_id=1851669807 instance=ExtResource("7_v0fls")]
-position = Vector2(471, 75)
-
-[node name="large_platform42" parent="environment" unique_id=470967664 instance=ExtResource("7_v0fls")]
-position = Vector2(272, 276)
-
-[node name="large_platform43" parent="environment" unique_id=1405125059 instance=ExtResource("7_v0fls")]
-position = Vector2(358, 276)
-
-[node name="large_platform44" parent="environment" unique_id=1449197360 instance=ExtResource("7_v0fls")]
-position = Vector2(398, 276)
-
-[node name="tiny_platform2" parent="environment" unique_id=307647104 instance=ExtResource("10_h7crl")]
-position = Vector2(683, 542)
-
-[node name="tiny_platform4" parent="environment" unique_id=1128084731 instance=ExtResource("10_h7crl")]
-position = Vector2(729, 542)
-
-[node name="tiny_platform6" parent="environment" unique_id=817588599 instance=ExtResource("10_h7crl")]
-position = Vector2(776, 542)
-
-[node name="tiny_platform7" parent="environment" unique_id=518329471 instance=ExtResource("10_h7crl")]
-position = Vector2(819, 542)
-
-[node name="tiny_platform8" parent="environment" unique_id=2040893633 instance=ExtResource("10_h7crl")]
-position = Vector2(866, 542)
-
-[node name="tiny_platform9" parent="environment" unique_id=762613546 instance=ExtResource("10_h7crl")]
-position = Vector2(913, 542)
-
-[node name="tiny_platform13" parent="environment" unique_id=694413057 instance=ExtResource("10_h7crl")]
-position = Vector2(524, 153)
-
-[node name="tiny_platform14" parent="environment" unique_id=473194909 instance=ExtResource("10_h7crl")]
-position = Vector2(571, 153)
-
-[node name="tiny_platform15" parent="environment" unique_id=2089184926 instance=ExtResource("10_h7crl")]
-position = Vector2(617, 153)
-
-[node name="tiny_platform16" parent="environment" unique_id=1208949268 instance=ExtResource("10_h7crl")]
-position = Vector2(664, 153)
-
-[node name="tiny_platform17" parent="environment" unique_id=1294535063 instance=ExtResource("10_h7crl")]
-position = Vector2(707, 153)
-
-[node name="tiny_platform18" parent="environment" unique_id=1657283933 instance=ExtResource("10_h7crl")]
-position = Vector2(754, 153)
-
-[node name="tiny_platform19" parent="environment" unique_id=202282441 instance=ExtResource("10_h7crl")]
-position = Vector2(801, 153)
-
-[node name="tiny_platform10" parent="environment" unique_id=850508771 instance=ExtResource("10_h7crl")]
-position = Vector2(960, 542)
-
-[node name="tiny_platform11" parent="environment" unique_id=848445246 instance=ExtResource("10_h7crl")]
-position = Vector2(982, 542)
-
-[node name="tiny_platform12" parent="environment" unique_id=1707246293 instance=ExtResource("10_h7crl")]
-position = Vector2(1029, 542)
-
-[node name="large_platform5" parent="environment" unique_id=930276998 instance=ExtResource("7_v0fls")]
-position = Vector2(1005, 162)
-
-[node name="large_platform" parent="environment" unique_id=989822771 instance=ExtResource("7_v0fls")]
-position = Vector2(495, 360)
-
-[node name="large_platform2" parent="environment" unique_id=1406951101 instance=ExtResource("7_v0fls")]
-position = Vector2(577, 360)
-
-[node name="medium_platform" parent="environment" unique_id=315163348 instance=ExtResource("9_eybdv")]
-position = Vector2(49, 282)
-
-[node name="medium_platform2" parent="environment" unique_id=730459651 instance=ExtResource("9_eybdv")]
-position = Vector2(146, 201)
-
-[node name="pink_flower" parent="environment" unique_id=24437237 instance=ExtResource("8_u2wpt")]
-offset_left = 217.0
-offset_top = 608.0
-offset_right = 233.0
-offset_bottom = 634.0
-metadata/_edit_use_anchors_ = true
+position = Vector2(2000, 570)
 
 [node name="map" type="Node" parent="." unique_id=200379514]
+
+[node name="extra_ground" type="TextureRect" parent="map" unique_id=161920341]
+offset_top = 762.0
+offset_right = 2177.0
+offset_bottom = 900.0
+texture = ExtResource("7_vni48")
+flip_v = true
+
+[node name="extra_ground2" type="TextureRect" parent="map" unique_id=1723540746]
+offset_left = -2.0
+offset_top = 896.0
+offset_right = 2175.0
+offset_bottom = 1034.0
+texture = ExtResource("7_vni48")
+flip_h = true
 
 [node name="ground_1" type="TextureRect" parent="map" unique_id=128962562]
 offset_left = -306.0
@@ -303,7 +321,6 @@ offset_top = 629.0
 offset_right = 1182.0
 offset_bottom = 767.0
 texture = ExtResource("12_vni48")
-metadata/_edit_lock_ = true
 
 [node name="ground_2" type="TextureRect" parent="map" unique_id=2075118894]
 offset_left = 1178.0
@@ -312,29 +329,26 @@ offset_right = 2666.0
 offset_bottom = 767.0
 texture = ExtResource("12_vni48")
 flip_h = true
-metadata/_edit_lock_ = true
 
 [node name="left_side" type="TextureRect" parent="map" unique_id=545154602]
 z_index = 1
 offset_left = -348.0
-offset_top = -750.0
+offset_top = -636.0
 offset_right = -116.0
-offset_bottom = 275.0
+offset_bottom = 389.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("13_tjm58")
 stretch_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="right_side" type="TextureRect" parent="map" unique_id=206179627]
 z_index = 1
-offset_left = 1749.0
-offset_top = -750.0
-offset_right = 1981.0
-offset_bottom = 275.0
+offset_left = 2177.0
+offset_top = -636.0
+offset_right = 2409.0
+offset_bottom = 389.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("13_tjm58")
 stretch_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="power_up_spawns" type="Node" parent="." unique_id=512010529]
 
@@ -394,7 +408,7 @@ label_settings = SubResource("LabelSettings_fh2hd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="end_menu" type="Control" parent="CanvasLayer" unique_id=1154506278 node_paths=PackedStringArray("scene_root", "time_display", "pause_button")]
+[node name="end_menu" type="Control" parent="CanvasLayer" unique_id=1154506278 node_paths=PackedStringArray("scene_root", "time_display", "pause_button", "play_again_button_lable", "overlay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -405,16 +419,19 @@ script = ExtResource("14_l4vec")
 scene_root = NodePath("../..")
 time_display = NodePath("VBoxContainer/HBoxContainer/time_display")
 pause_button = NodePath("../pause_button")
+play_again_button_lable = NodePath("play_again_button/play_again_text")
+overlay = NodePath("ColorRect")
 metadata/_edit_use_anchors_ = true
 
-[node name="end_overlay" type="Panel" parent="CanvasLayer/end_menu" unique_id=1384842511]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/end_menu" unique_id=1147785503]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_sdnyn")
+color = Color(0.8963674, 0.8963674, 0.8963674, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="player_won_label" type="Label" parent="CanvasLayer/end_menu" unique_id=194899798]
 layout_mode = 1
@@ -428,7 +445,7 @@ offset_right = 1.0
 offset_bottom = -94.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Player One WON !!"
+text = "Ready to play tag?"
 label_settings = SubResource("LabelSettings_tjm58")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -458,7 +475,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play Again?"
+text = "Start"
 label_settings = SubResource("LabelSettings_l4vec")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -513,6 +530,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_57qmd")
 text = " + "
 
 [node name="pause_button" type="Button" parent="CanvasLayer" unique_id=1669048415 node_paths=PackedStringArray("pause_menu")]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -530,6 +548,23 @@ pause_menu = NodePath("../pause_menu")
 
 [node name="game_timer" type="Timer" parent="." unique_id=1445887463]
 wait_time = 120.0
+
+[node name="paths" type="TextureRect" parent="." unique_id=1594535984]
+z_index = -1
+offset_left = -232.0
+offset_top = -336.0
+offset_right = 2516.0
+offset_bottom = 719.0
+texture = ExtResource("14_vni48")
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="Area2D" parent="." unique_id=559900819 instance=ExtResource("15_tjm58")]
+position = Vector2(2125, 366)
+
+[node name="Area2D2" parent="." unique_id=1178303277 instance=ExtResource("15_tjm58")]
+position = Vector2(18, 604)
+boost_velocity = -1100.0
 
 [connection signal="pressed" from="CanvasLayer/end_menu/play_again_button" to="CanvasLayer/end_menu" method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/end_menu/VBoxContainer/HBoxContainer/minus_time" to="CanvasLayer/end_menu" method="_on_minus_time_pressed"]

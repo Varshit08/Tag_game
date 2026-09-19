@@ -87,6 +87,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
+	print(velocity.y)
+	
 	move_and_slide()
 	if get_meta(TAGGER_META, true):
 		speed = TAG_SPEED
