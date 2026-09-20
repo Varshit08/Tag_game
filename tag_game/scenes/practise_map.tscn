@@ -8,13 +8,22 @@
 [ext_resource type="Texture2D" uid="uid://1qumfbrrl4rw" path="res://assets/maps/extra_ground.png" id="7_vni48"]
 [ext_resource type="Texture2D" uid="uid://dfxsfk3pviyt5" path="res://assets/button_assets/pausebutton.png" id="8_tjm58"]
 [ext_resource type="Script" uid="uid://by30klqu7mk56" path="res://scripts/pause_button.gd" id="9_l4vec"]
+[ext_resource type="Script" uid="uid://bq5ferye17vc1" path="res://scripts/power_up_spawner.gd" id="10_l4vec"]
 [ext_resource type="Texture2D" uid="uid://bh7xrc1pdckhp" path="res://assets/maps/map_1_background.png" id="11_24gx4"]
 [ext_resource type="PackedScene" uid="uid://bmj3fiimwij2p" path="res://scenes/camera.tscn" id="11_eybdv"]
+[ext_resource type="PackedScene" uid="uid://cle04a66iyd5b" path="res://scenes/jump_powerup.tscn" id="11_o1wfh"]
 [ext_resource type="Texture2D" uid="uid://cp44qkbt466ch" path="res://assets/maps/map_1_ground.png" id="12_vni48"]
+[ext_resource type="PackedScene" uid="uid://bwqst11i2itok" path="res://scenes/invis_powerup.tscn" id="12_vskl2"]
+[ext_resource type="PackedScene" uid="uid://dg553a6a1ucqd" path="res://scenes/speed_powerup.tscn" id="13_dqx40"]
+[ext_resource type="Texture2D" uid="uid://cyfswi11wlh0b" path="res://assets/enviroment_assets/small_tree.png" id="13_m4g5n"]
 [ext_resource type="Texture2D" uid="uid://tp0y1qylo2yo" path="res://assets/maps/side_wall.png" id="13_tjm58"]
+[ext_resource type="Texture2D" uid="uid://ciquaaxk47f0l" path="res://assets/enviroment_assets/crate.png" id="14_kyw1q"]
 [ext_resource type="Script" uid="uid://cnveiowwbj2md" path="res://scripts/end_menu.gd" id="14_l4vec"]
 [ext_resource type="Texture2D" uid="uid://d4meucn6wt65e" path="res://assets/maps/map_one_paths.png" id="14_vni48"]
+[ext_resource type="Texture2D" uid="uid://bppnws46ewp3h" path="res://assets/RedNinja.png" id="15_8bsfs"]
 [ext_resource type="PackedScene" uid="uid://cm07n2tv1887t" path="res://scenes/jump_pad.tscn" id="15_tjm58"]
+[ext_resource type="Texture2D" uid="uid://dbiqxepc1yews" path="res://assets/BlueNinja.png" id="16_o1wfh"]
+[ext_resource type="Texture2D" uid="uid://vcrsf1bh57b1" path="res://assets/enviroment_assets/multi_crate.png" id="17_vskl2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h7crl"]
 distance = -15.0
@@ -38,7 +47,7 @@ size = Vector2(255.67181, 27.581055)
 size = Vector2(192.38206, 27.581055)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8p1p"]
-size = Vector2(319.19107, 27.581055)
+size = Vector2(311.00006, 27.581055)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0k4l6"]
 size = Vector2(343.59558, 27.581055)
@@ -62,7 +71,10 @@ size = Vector2(212.73737, 27.581055)
 size = Vector2(492.3688, 25.790537)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqx40"]
-size = Vector2(438.1844, 25.790537)
+size = Vector2(470.09225, 25.790537)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a6cn"]
+size = Vector2(437.00012, 25.790537)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frnlm"]
 size = Vector2(344.09213, 25.790537)
@@ -124,7 +136,7 @@ font = ExtResource("2_dont8")
 font_size = 18
 font_color = Color(0, 0, 0, 1)
 
-[node name="root" type="Node2D" unique_id=38678437 node_paths=PackedStringArray("player_one", "player_two", "player_one_spawn", "player_two_spawn", "game_timer", "game_time_label", "pause_button", "play_again_control", "player_won_label")]
+[node name="root" type="Node2D" unique_id=38678437 node_paths=PackedStringArray("player_one", "player_two", "player_one_spawn", "player_two_spawn", "game_timer", "game_time_label", "pause_button", "power_up_spawns", "play_again_control", "player_won_label")]
 script = ExtResource("1_yu8s3")
 player_one = NodePath("playerone")
 player_two = NodePath("playertwo")
@@ -134,6 +146,7 @@ set_time = 30
 game_timer = NodePath("game_timer")
 game_time_label = NodePath("CanvasLayer/game_timer")
 pause_button = NodePath("CanvasLayer/pause_button")
+power_up_spawns = NodePath("power_up_spawns")
 play_again_control = NodePath("CanvasLayer/end_menu")
 player_won_label = NodePath("CanvasLayer/end_menu/player_won_label")
 
@@ -157,40 +170,40 @@ metadata/_edit_lock_ = true
 [node name="platforms" type="StaticBody2D" parent="." unique_id=2004990534]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platforms" unique_id=1267886542]
-position = Vector2(170.35114, 422.94385)
+position = Vector2(151, 421)
 rotation = 0.40142572
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="platforms" unique_id=2045801643]
-position = Vector2(311, 423)
+position = Vector2(308, 419.00003)
 rotation = 0.40142572
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="platforms" unique_id=1251960837]
-position = Vector2(456, 423.00003)
+position = Vector2(463.99997, 423.00003)
 rotation = 0.40142572
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="platforms" unique_id=1911972718]
-position = Vector2(60.83583, -60.070778)
+position = Vector2(60.000004, -35.000008)
 rotation = 0.34906584
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_tjm58")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="platforms" unique_id=8885937]
-position = Vector2(533.637, 68.477104)
+position = Vector2(502, 101)
 rotation = 0.26179937
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_l4vec")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="platforms" unique_id=1931053749]
-position = Vector2(1278.4335, 204.80974)
+position = Vector2(1279.45, 203.35)
 rotation = 0.26179934
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_xmu2j")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="platforms" unique_id=1733344925]
-position = Vector2(249.40448, 180.00002)
+position = Vector2(252.00002, 178)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_h8p1p")
 
@@ -225,7 +238,7 @@ scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_kyw1q")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="platforms" unique_id=1775932468]
-position = Vector2(1910.4999, 232.00002)
+position = Vector2(1911, 224)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_8bsfs")
 
@@ -235,27 +248,27 @@ scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_o1wfh")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="platforms" unique_id=1346555066]
-position = Vector2(1643, -47)
+position = Vector2(1616, -41)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_o1wfh")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="platforms" unique_id=347101357]
-position = Vector2(1227, 47)
+position = Vector2(1185, 63)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_vskl2")
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="platforms" unique_id=242798832]
-position = Vector2(971.90784, 180.99998)
+position = Vector2(955.0461, 178)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_dqx40")
 
 [node name="CollisionShape2D21" type="CollisionShape2D" parent="platforms" unique_id=2139462155]
-position = Vector2(705.00006, -55)
+position = Vector2(709.5, -25.000002)
 scale = Vector2(0.9999997, 0.9999997)
-shape = SubResource("RectangleShape2D_dqx40")
+shape = SubResource("RectangleShape2D_1a6cn")
 
 [node name="CollisionShape2D22" type="CollisionShape2D" parent="platforms" unique_id=1957165422]
-position = Vector2(288.95398, -137.00002)
+position = Vector2(284, -134)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_frnlm")
 
@@ -265,7 +278,7 @@ scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_kyw1q")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="platforms" unique_id=358557131]
-position = Vector2(1976, 112)
+position = Vector2(1978, 105.00001)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_jquao")
 
@@ -277,14 +290,12 @@ player2 = NodePath("../playertwo")
 background_texture = ExtResource("11_24gx4")
 
 [node name="playerone" parent="." unique_id=1990145254 instance=ExtResource("1_0nps2")]
-position = Vector2(37, 570)
 player_texture = ExtResource("4_50rx3")
 jump = "player_one_jump"
 left = "player_one_left"
 right = "player_one_right"
 
 [node name="playertwo" parent="." unique_id=1996809327 instance=ExtResource("1_0nps2")]
-position = Vector2(2105, 572)
 player_texture = ExtResource("5_v0fls")
 jump = "player_two_jump"
 left = "player_two_left"
@@ -293,10 +304,10 @@ right = "player_two_right"
 [node name="player_spawns" type="Node" parent="." unique_id=264871322]
 
 [node name="player_one" type="Marker2D" parent="player_spawns" unique_id=358946023]
-position = Vector2(200, 570)
+position = Vector2(152, 580)
 
 [node name="player_two" type="Marker2D" parent="player_spawns" unique_id=55858025]
-position = Vector2(2000, 570)
+position = Vector2(2000, 580)
 
 [node name="map" type="Node" parent="." unique_id=200379514]
 
@@ -350,16 +361,35 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("13_tjm58")
 stretch_mode = 2
 
-[node name="power_up_spawns" type="Node" parent="." unique_id=512010529]
+[node name="power_up_spawns" type="Node" parent="." unique_id=512010529 node_paths=PackedStringArray("spawner_timer")]
+script = ExtResource("10_l4vec")
+spawner_timer = NodePath("Timer")
+power_ups = Array[PackedScene]([ExtResource("11_o1wfh"), ExtResource("12_vskl2"), ExtResource("13_dqx40")])
+spawn_interval = 1
+spawn_chance = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="power_up_spawns" unique_id=4425125]
-position = Vector2(1060, 156)
+position = Vector2(162, 366)
 
 [node name="Marker2D2" type="Marker2D" parent="power_up_spawns" unique_id=1527566984]
-position = Vector2(819, 440)
+position = Vector2(1784, 168)
 
 [node name="Marker2D3" type="Marker2D" parent="power_up_spawns" unique_id=1427030471]
-position = Vector2(30, 344)
+position = Vector2(283, -191)
+
+[node name="Marker2D4" type="Marker2D" parent="power_up_spawns" unique_id=1137966571]
+position = Vector2(1074, 123)
+
+[node name="Marker2D5" type="Marker2D" parent="power_up_spawns" unique_id=1868085127]
+position = Vector2(1614, -93)
+
+[node name="Marker2D6" type="Marker2D" parent="power_up_spawns" unique_id=437447691]
+position = Vector2(513, 53)
+
+[node name="Marker2D7" type="Marker2D" parent="power_up_spawns" unique_id=1593585962]
+position = Vector2(1296, 400)
+
+[node name="Timer" type="Timer" parent="power_up_spawns" unique_id=911077146]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894652531]
 
@@ -408,7 +438,7 @@ label_settings = SubResource("LabelSettings_fh2hd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="end_menu" type="Control" parent="CanvasLayer" unique_id=1154506278 node_paths=PackedStringArray("scene_root", "time_display", "pause_button", "play_again_button_lable", "overlay")]
+[node name="end_menu" type="Control" parent="CanvasLayer" unique_id=1154506278 node_paths=PackedStringArray("scene_root", "time_display", "pause_button", "play_again_button_lable", "overlay", "greeting_visuals")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -421,6 +451,7 @@ time_display = NodePath("VBoxContainer/HBoxContainer/time_display")
 pause_button = NodePath("../pause_button")
 play_again_button_lable = NodePath("play_again_button/play_again_text")
 overlay = NodePath("ColorRect")
+greeting_visuals = NodePath("greeting_visuals")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/end_menu" unique_id=1147785503]
@@ -432,6 +463,115 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.8963674, 0.8963674, 0.8963674, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="greeting_visuals" type="Control" parent="CanvasLayer/end_menu" unique_id=439411047]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect9" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=376491605]
+texture_filter = 1
+layout_mode = 0
+offset_right = 4283.333
+offset_bottom = 2400.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("11_24gx4")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=1485342569]
+texture_filter = 1
+layout_mode = 0
+offset_left = 34.0
+offset_top = 82.99999
+offset_right = 558.6239
+offset_bottom = 709.07556
+rotation = 0.07657896
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_m4g5n")
+
+[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=378422610]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 637.0
+offset_right = 1377.8184
+offset_bottom = 960.8795
+rotation = -0.13334984
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_kyw1q")
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=1931764606]
+texture_filter = 1
+layout_mode = 0
+offset_left = 971.0
+offset_top = 143.00003
+offset_right = 2119.0
+offset_bottom = 1513.0
+rotation = 0.33154434
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("15_8bsfs")
+stretch_mode = 3
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=787130730]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 221.0
+offset_right = 1154.0
+offset_bottom = 1591.0
+rotation = -0.15261704
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_o1wfh")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=1271637246]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0000114
+offset_top = 557.00006
+offset_right = 528.6239
+offset_bottom = 1183.0757
+rotation = -0.10449119
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_m4g5n")
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=1499786408]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1170.0
+offset_top = 588.00006
+offset_right = 1633.3416
+offset_bottom = 1060.178
+rotation = 0.20133536
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_kyw1q")
+stretch_mode = 4
+
+[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=1386296456]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1194.0
+offset_top = 1.000061
+offset_right = 1511.8184
+offset_bottom = 324.87958
+rotation = -0.16903785
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_kyw1q")
+stretch_mode = 4
+
+[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=391178008]
+texture_filter = 1
+layout_mode = 0
+offset_left = 530.0
+offset_top = 621.99994
+offset_right = 1193.3942
+offset_bottom = 1056.9335
+rotation = -0.1396426
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("17_vskl2")
+stretch_mode = 4
 
 [node name="player_won_label" type="Label" parent="CanvasLayer/end_menu" unique_id=194899798]
 layout_mode = 1
@@ -566,6 +706,7 @@ position = Vector2(2125, 366)
 position = Vector2(18, 604)
 boost_velocity = -1100.0
 
+[connection signal="timeout" from="power_up_spawns/Timer" to="power_up_spawns" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/end_menu/play_again_button" to="CanvasLayer/end_menu" method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/end_menu/VBoxContainer/HBoxContainer/minus_time" to="CanvasLayer/end_menu" method="_on_minus_time_pressed"]
 [connection signal="pressed" from="CanvasLayer/end_menu/VBoxContainer/HBoxContainer/add_time" to="CanvasLayer/end_menu" method="_on_add_time_pressed"]

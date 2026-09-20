@@ -1,6 +1,6 @@
 extends Control
 
-const MAX_TIME := 300
+const MAX_TIME := 180
 const MIN_TIME := 10
 const TIME_STEP := 10
 
@@ -15,6 +15,7 @@ const END_OVERLAY_TRANSPARENT := Color(1.0, 1.0, 1.0, 0.435)
 
 @export var play_again_button_lable : Label
 @export var overlay : ColorRect
+@export var greeting_visuals : Control
 
 
 func _ready() -> void:
@@ -29,6 +30,7 @@ func _on_play_again_button_pressed() -> void:
 	scene_root._start_game(scene_root.set_time)
 	play_again_button_lable.text = PLAY_AGAIN_TEXT 
 	overlay.color = END_OVERLAY_TRANSPARENT
+	greeting_visuals.visible = false
 
 
 func _on_minus_time_pressed() -> void:

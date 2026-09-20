@@ -16,6 +16,7 @@ const PLAYER_TWO_TEXT := "Two"
 @export var game_timer : Timer
 @export var game_time_label : Label
 @export var pause_button : Button
+@export var power_up_spawns : Node
 
 @export_group("Play Again UI")
 @export var play_again_control : Control
@@ -50,6 +51,9 @@ func _start_game(time : int) -> void:
 
 
 func _on_timer_timeout():
+	player_one.clear_power_ups()
+	player_two.clear_power_ups()
+	await power_up_spawns.clear_powerups()
 	get_tree().paused = true
 	Global.game_running = false
 	play_again_control.visible = true

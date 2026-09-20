@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(40, 20)
 
-[node name="Area2D" type="Area2D" unique_id=559900819]
+[node name="Area2D" type="Area2D" unique_id=559900819 groups=["power_ups"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_7e8al")

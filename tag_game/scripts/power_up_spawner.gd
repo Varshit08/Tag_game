@@ -1,7 +1,8 @@
 extends Node
 
+const POWER_UP_GROUP := "power_ups"
+
 @export var spawner_timer : Timer
-@export var spawn_node : Node
 @export var power_ups : Array[PackedScene]
 
 @export var spawn_interval := 10
@@ -13,12 +14,12 @@ var spawn_markers : Dictionary
 
 func _ready() -> void:
 	# gets all the marker nodes and sets if they have a power up to false
-	for marker in spawn_node.get_children():
-		spawn_markers[marker] = false
+	for node in get_children():
+		if node is Marker2D:
+			spawn_markers[node] = false
 	
-	# started the spawning process
-	spawner_timer.wait_time = spawn_interval
-	spawner_timer.start()
+	# started the spawning
+	spawner_timer.start(spawn_interval)
 
 
 func spawn_powerup() -> void:
@@ -47,12 +48,23 @@ func spawn_powerup() -> void:
 	add_child(powerup)
 
 
-# spawns the power up on timeout
-func _on_power_up_timer_timeout() -> void:
-	spawn_powerup()
-
-
-# sets the spawn marker to not have a powerup
+# sets the spawn marker to not have a powerup called from the power up
 func power_up_pickup(marker : Marker2D) -> void:
 	spawn_markers[marker] = false
+
+
+# clears all the powerups in the game at the end of the round
+func clear_powerups() -> void:
+	print("start clear")
+	for x in spawn_markers:
+		spawn_markers[x] = false
 	
+	for power_up in get_tree().get_nodes_in_group(POWER_UP_GROUP):
+		print("clearing")
+		power_up.queue_free()
+	
+	return
+
+
+func _on_timer_timeout() -> void:
+	spawn_powerup()

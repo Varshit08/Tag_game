@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dxt054tjsjgxv" path="res://assets/player_assets/blue_character.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cq870oxs34h5j" path="res://assets/player_assets/foot.png" id="4_dqkch"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4vec"]
+size = Vector2(30, 30)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
 size = Vector2(30, 30)
 
@@ -206,7 +209,7 @@ metadata/tagger = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730235007]
 position = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_fh2hd")
+shape = SubResource("RectangleShape2D_l4vec")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1763371737]
 position = Vector2(18, 17)
