@@ -55,7 +55,7 @@ func power_up_pickup(marker : Marker2D) -> void:
 
 # clears all the powerups in the game at the end of the round
 func clear_powerups() -> void:
-	print("start clear")
+	print(get_tree().get_nodes_in_group("power_ups"))
 	for x in spawn_markers:
 		spawn_markers[x] = false
 	

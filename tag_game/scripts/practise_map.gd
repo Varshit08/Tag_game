@@ -5,6 +5,8 @@ const WON_PLAYER_TEXT := "Player %s Wins!"
 const PLAYER_ONE_TEXT := "One"
 const PLAYER_TWO_TEXT := "Two"
 
+const RELOAD_CURRENT_SCENE := "reload_current_scene"
+
 @export_group("Player Related")
 @export var player_one : CharacterBody2D
 @export var player_two : CharacterBody2D
@@ -17,6 +19,7 @@ const PLAYER_TWO_TEXT := "Two"
 @export var game_time_label : Label
 @export var pause_button : Button
 @export var power_up_spawns : Node
+@export var main_menu_button_canvas : CanvasLayer
 
 @export_group("Play Again UI")
 @export var play_again_control : Control
@@ -66,3 +69,8 @@ func _on_timer_timeout():
 		won_player = PLAYER_ONE_TEXT
 	
 	player_won_label.text = WON_PLAYER_TEXT % won_player
+ 
+
+func _on_main_menu_button_pressed() -> void:
+	print("called")
+	get_tree().call_deferred(RELOAD_CURRENT_SCENE)

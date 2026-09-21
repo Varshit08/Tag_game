@@ -6,6 +6,7 @@ const PAUSE_INPUT := "pause"
 const PAUSE_BUFFER := 0.1
 
 @export var pause_menu : Control
+@export var main_menu_button_canvas : CanvasLayer
 
 var pause_debounce := false
 
@@ -15,7 +16,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed(PAUSE_INPUT):
+	if Input.is_action_just_pressed(PAUSE_INPUT) and Global.game_running:
 		_toggle_pause()
 
 
@@ -30,6 +31,7 @@ func _toggle_pause() -> void:
 	pause_debounce = true
 	
 	Global.game_paused = not Global.game_paused
+	main_menu_button_canvas.visible = Global.game_paused
 	get_tree().paused = Global.game_paused
 	pause_menu.visible = Global.game_paused
 	

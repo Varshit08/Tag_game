@@ -22,11 +22,11 @@ const SPEED_POWER_BOOST := 1.3
 const SPEED_POWER_TIME := 5
 
 # Jump Height Additive
-const JUMP_POWER_BOOST := -250
+const JUMP_POWER_BOOST := -150
 const JUMP_POWER_TIME := 5
 
 # Invis Powerup
-const INVIS_MODULATE := Color(1.0, 1.0, 1.0, 0.200)
+const INVIS_MODULATE := Color(1.0, 1.0, 1.0, 0.400)
 const NORMAL_MODULATE := Color(1, 1, 1, 1)
 const INVIS_TIME := 5
 

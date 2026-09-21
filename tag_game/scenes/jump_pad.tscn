@@ -6,6 +6,7 @@
 size = Vector2(40, 20)
 
 [node name="Area2D" type="Area2D" unique_id=559900819 groups=["power_ups"]]
+process_mode = 3
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_7e8al")

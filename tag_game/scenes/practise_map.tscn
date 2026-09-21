@@ -24,6 +24,17 @@
 [ext_resource type="PackedScene" uid="uid://cm07n2tv1887t" path="res://scenes/jump_pad.tscn" id="15_tjm58"]
 [ext_resource type="Texture2D" uid="uid://dbiqxepc1yews" path="res://assets/BlueNinja.png" id="16_o1wfh"]
 [ext_resource type="Texture2D" uid="uid://vcrsf1bh57b1" path="res://assets/enviroment_assets/multi_crate.png" id="17_vskl2"]
+[ext_resource type="Texture2D" uid="uid://1dg5dpwrxt73" path="res://assets/enviroment_assets/image 17.png" id="23_1a6cn"]
+[ext_resource type="Texture2D" uid="uid://bxkpepknbm2su" path="res://assets/enviroment_assets/large_tree.png" id="24_odjtl"]
+[ext_resource type="Texture2D" uid="uid://dd60mhjd4uvdu" path="res://assets/enviroment_assets/pink_flower.png" id="25_h0ujt"]
+[ext_resource type="Texture2D" uid="uid://vseqr2gk32he" path="res://assets/enviroment_assets/yellow_flower.png" id="26_4a6tf"]
+[ext_resource type="Texture2D" uid="uid://dmtmjf0l6wkyb" path="res://assets/enviroment_assets/small_bush.png" id="27_8rrsf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2hd"]
+size = Vector2(69, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odjtl"]
+size = Vector2(25.25, 25)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h7crl"]
 distance = -15.0
@@ -86,34 +97,40 @@ size = Vector2(213.47473, 27.581055)
 font = ExtResource("2_dont8")
 font_size = 50
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdnyn"]
-bg_color = Color(1, 1, 1, 0.5882353)
-
-[sub_resource type="LabelSettings" id="LabelSettings_fh2hd"]
-font = ExtResource("2_dont8")
-font_size = 64
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_tjm58"]
 font = ExtResource("2_dont8")
 font_size = 48
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4vec"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jquao"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4vec"]
-bg_color = Color(1, 1, 1, 0.5568628)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gngh"]
+bg_color = Color(1, 1, 1, 0.78039217)
+border_width_left = 50
+border_width_top = 30
+border_width_right = 50
+border_width_bottom = 30
 border_color = Color(1, 1, 1, 0)
 border_blend = true
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-corner_detail = 12
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vskl2"]
+bg_color = Color(1, 1, 1, 0.78039217)
+border_width_left = 50
+border_width_top = 30
+border_width_right = 50
+border_width_bottom = 30
+border_color = Color(1, 1, 1, 0)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_l4vec"]
 font = ExtResource("2_dont8")
@@ -136,7 +153,42 @@ font = ExtResource("2_dont8")
 font_size = 18
 font_color = Color(0, 0, 0, 1)
 
-[node name="root" type="Node2D" unique_id=38678437 node_paths=PackedStringArray("player_one", "player_two", "player_one_spawn", "player_two_spawn", "game_timer", "game_time_label", "pause_button", "power_up_spawns", "play_again_control", "player_won_label")]
+[sub_resource type="LabelSettings" id="LabelSettings_fh2hd"]
+font = ExtResource("2_dont8")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o1wfh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqx40"]
+bg_color = Color(1, 1, 1, 0.4745098)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 0)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frnlm"]
+bg_color = Color(1, 1, 1, 0.4745098)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 0)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[node name="root" type="Node2D" unique_id=38678437 node_paths=PackedStringArray("player_one", "player_two", "player_one_spawn", "player_two_spawn", "game_timer", "game_time_label", "pause_button", "power_up_spawns", "main_menu_button_canvas", "play_again_control", "player_won_label")]
 script = ExtResource("1_yu8s3")
 player_one = NodePath("playerone")
 player_two = NodePath("playertwo")
@@ -147,8 +199,19 @@ game_timer = NodePath("game_timer")
 game_time_label = NodePath("CanvasLayer/game_timer")
 pause_button = NodePath("CanvasLayer/pause_button")
 power_up_spawns = NodePath("power_up_spawns")
+main_menu_button_canvas = NodePath("main_menu_button_canvas")
 play_again_control = NodePath("CanvasLayer/end_menu")
 player_won_label = NodePath("CanvasLayer/end_menu/player_won_label")
+
+[node name="decor_collision_shapes" type="StaticBody2D" parent="." unique_id=555231440]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decor_collision_shapes" unique_id=686816660]
+position = Vector2(1058.5, 39)
+shape = SubResource("RectangleShape2D_fh2hd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="decor_collision_shapes" unique_id=11671213]
+position = Vector2(1059.625, 16.5)
+shape = SubResource("RectangleShape2D_odjtl")
 
 [node name="world_borders" type="StaticBody2D" parent="." unique_id=1464168639]
 metadata/_edit_lock_ = true
@@ -170,117 +233,139 @@ metadata/_edit_lock_ = true
 [node name="platforms" type="StaticBody2D" parent="." unique_id=2004990534]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platforms" unique_id=1267886542]
-position = Vector2(151, 421)
+position = Vector2(151, 420)
 rotation = 0.40142572
 shape = SubResource("RectangleShape2D_g4v7s")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="platforms" unique_id=2045801643]
-position = Vector2(308, 419.00003)
+position = Vector2(308, 418.00003)
 rotation = 0.40142572
 shape = SubResource("RectangleShape2D_g4v7s")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="platforms" unique_id=1251960837]
-position = Vector2(463.99997, 423.00003)
+position = Vector2(463.99997, 422.00003)
 rotation = 0.40142572
 shape = SubResource("RectangleShape2D_g4v7s")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="platforms" unique_id=1911972718]
-position = Vector2(60.000004, -35.000008)
+position = Vector2(60, -36.000008)
 rotation = 0.34906584
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_tjm58")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="platforms" unique_id=8885937]
-position = Vector2(502, 101)
+position = Vector2(502, 100)
 rotation = 0.26179937
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_l4vec")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="platforms" unique_id=1931053749]
-position = Vector2(1279.45, 203.35)
+position = Vector2(1279.45, 202.35)
 rotation = 0.26179934
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_xmu2j")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="platforms" unique_id=1733344925]
-position = Vector2(252.00002, 178)
+position = Vector2(252.00002, 177)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_h8p1p")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="platforms" unique_id=1285656135]
-position = Vector2(615.20233, 294.00003)
+position = Vector2(618, 291)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_0k4l6")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="platforms" unique_id=756077293]
-position = Vector2(836.10114, 519)
+position = Vector2(836.10114, 518)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_o3d4f")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="platforms" unique_id=1516787719]
-position = Vector2(1300.0505, 452)
+position = Vector2(1300.0505, 451)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_m4g5n")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="platforms" unique_id=1261476070]
-position = Vector2(1514.0001, 345.00003)
+position = Vector2(1514.0001, 344.00003)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_m4g5n")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="platforms" unique_id=866817685]
-position = Vector2(2032.5253, 520)
+position = Vector2(2032.5253, 519)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_kyw1q")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="platforms" unique_id=1372198811]
-position = Vector2(2129, 404)
+position = Vector2(2129, 403)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_kyw1q")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="platforms" unique_id=1775932468]
-position = Vector2(1911, 224)
+position = Vector2(1911, 223)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_8bsfs")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="platforms" unique_id=2131147563]
-position = Vector2(1923, -115)
+position = Vector2(1923, -116)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_o1wfh")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="platforms" unique_id=1346555066]
-position = Vector2(1616, -41)
+position = Vector2(1616, -42)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_o1wfh")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="platforms" unique_id=347101357]
-position = Vector2(1185, 63)
+position = Vector2(1185, 62)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_vskl2")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="platforms" unique_id=242798832]
-position = Vector2(955.0461, 178)
+position = Vector2(955.0461, 177)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_dqx40")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D21" type="CollisionShape2D" parent="platforms" unique_id=2139462155]
-position = Vector2(709.5, -25.000002)
+position = Vector2(709.5, -26.000002)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_1a6cn")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D22" type="CollisionShape2D" parent="platforms" unique_id=1957165422]
-position = Vector2(284, -134)
+position = Vector2(284, -135)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_frnlm")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="platforms" unique_id=1371711294]
-position = Vector2(2205, -9.000001)
+position = Vector2(2205, -10.000001)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_kyw1q")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="platforms" unique_id=358557131]
-position = Vector2(1978, 105.00001)
+position = Vector2(1978, 104.00001)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_jquao")
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" parent="." unique_id=1375332101 node_paths=PackedStringArray("player1", "player2") instance=ExtResource("11_eybdv")]
 position = Vector2(640, 360)
@@ -288,18 +373,21 @@ position_smoothing_enabled = false
 player1 = NodePath("../playerone")
 player2 = NodePath("../playertwo")
 background_texture = ExtResource("11_24gx4")
+metadata/_edit_lock_ = true
 
 [node name="playerone" parent="." unique_id=1990145254 instance=ExtResource("1_0nps2")]
 player_texture = ExtResource("4_50rx3")
 jump = "player_one_jump"
 left = "player_one_left"
 right = "player_one_right"
+metadata/_edit_lock_ = true
 
 [node name="playertwo" parent="." unique_id=1996809327 instance=ExtResource("1_0nps2")]
 player_texture = ExtResource("5_v0fls")
 jump = "player_two_jump"
 left = "player_two_left"
 right = "player_two_right"
+metadata/_edit_lock_ = true
 
 [node name="player_spawns" type="Node" parent="." unique_id=264871322]
 
@@ -366,28 +454,27 @@ script = ExtResource("10_l4vec")
 spawner_timer = NodePath("Timer")
 power_ups = Array[PackedScene]([ExtResource("11_o1wfh"), ExtResource("12_vskl2"), ExtResource("13_dqx40")])
 spawn_interval = 1
-spawn_chance = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="power_up_spawns" unique_id=4425125]
-position = Vector2(162, 366)
+position = Vector2(165, 386)
 
 [node name="Marker2D2" type="Marker2D" parent="power_up_spawns" unique_id=1527566984]
-position = Vector2(1784, 168)
+position = Vector2(1783, 181)
 
 [node name="Marker2D3" type="Marker2D" parent="power_up_spawns" unique_id=1427030471]
-position = Vector2(283, -191)
+position = Vector2(282, -171)
 
 [node name="Marker2D4" type="Marker2D" parent="power_up_spawns" unique_id=1137966571]
-position = Vector2(1074, 123)
+position = Vector2(1076, 148)
 
 [node name="Marker2D5" type="Marker2D" parent="power_up_spawns" unique_id=1868085127]
-position = Vector2(1614, -93)
+position = Vector2(1615, -74)
 
 [node name="Marker2D6" type="Marker2D" parent="power_up_spawns" unique_id=437447691]
-position = Vector2(513, 53)
+position = Vector2(513, 62)
 
 [node name="Marker2D7" type="Marker2D" parent="power_up_spawns" unique_id=1593585962]
-position = Vector2(1296, 400)
+position = Vector2(1300, 410)
 
 [node name="Timer" type="Timer" parent="power_up_spawns" unique_id=911077146]
 
@@ -404,39 +491,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="pause_menu" type="Control" parent="CanvasLayer" unique_id=820989230]
+[node name="pause_button" type="Button" parent="CanvasLayer" unique_id=1669048415 node_paths=PackedStringArray("pause_menu", "main_menu_button_canvas")]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
 grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="pause_overlay" type="Panel" parent="CanvasLayer/pause_menu" unique_id=212268759]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_sdnyn")
-
-[node name="pause_text" type="Label" parent="CanvasLayer/pause_menu" unique_id=887455512]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "The game is paused"
-label_settings = SubResource("LabelSettings_fh2hd")
-horizontal_alignment = 1
-vertical_alignment = 1
+grow_vertical = 0
+icon = ExtResource("8_tjm58")
+flat = true
+script = ExtResource("9_l4vec")
+pause_menu = NodePath("../pause_menu")
+main_menu_button_canvas = NodePath("../../main_menu_button_canvas")
 
 [node name="end_menu" type="Control" parent="CanvasLayer" unique_id=1154506278 node_paths=PackedStringArray("scene_root", "time_display", "pause_button", "play_again_button_lable", "overlay", "greeting_visuals")]
 layout_mode = 3
@@ -468,6 +539,7 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="TextureRect9" type="TextureRect" parent="CanvasLayer/end_menu/greeting_visuals" unique_id=376491605]
 texture_filter = 1
@@ -597,16 +669,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
+offset_left = -95.0
 offset_top = -31.5
-offset_right = 128.0
+offset_right = 95.0
 offset_bottom = 31.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_l4vec")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vec")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l4vec")
+theme_override_colors/font_pressed_color = Color(0.066070534, 0.06607054, 0.066070534, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jquao")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3gngh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vskl2")
 
 [node name="play_again_text" type="Label" parent="CanvasLayer/end_menu/play_again_button" unique_id=740215254]
 layout_mode = 1
@@ -669,25 +743,466 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_yf5fn")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_57qmd")
 text = " + "
 
-[node name="pause_button" type="Button" parent="CanvasLayer" unique_id=1669048415 node_paths=PackedStringArray("pause_menu")]
+[node name="pause_menu" type="Control" parent="CanvasLayer" unique_id=820989230]
 visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/pause_menu" unique_id=1989623793]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.43137255)
+
+[node name="pause_text" type="Label" parent="CanvasLayer/pause_menu" unique_id=887455512]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "The game is paused"
+label_settings = SubResource("LabelSettings_fh2hd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="main_menu_button_canvas" type="CanvasLayer" parent="." unique_id=2015760604]
+visible = false
+
+[node name="main_menu_button" type="Button" parent="main_menu_button_canvas" unique_id=645273942]
+process_mode = 3
+z_index = 2
+custom_minimum_size = Vector2(160, 40)
+custom_maximum_size = Vector2(160, 40)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
+offset_left = -80.0
+offset_top = -310.0
+offset_right = 80.0
+offset_bottom = -270.0
 grow_horizontal = 2
 grow_vertical = 0
-icon = ExtResource("8_tjm58")
-flat = true
-script = ExtResource("9_l4vec")
-pause_menu = NodePath("../pause_menu")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.12225223, 0.12225223, 0.12225223, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dont8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o1wfh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dqx40")
+theme_override_styles/hover = SubResource("StyleBoxFlat_frnlm")
+text = "Main Menu"
 
 [node name="game_timer" type="Timer" parent="." unique_id=1445887463]
 wait_time = 120.0
+
+[node name="decor" type="Control" parent="." unique_id=372279201]
+z_index = -1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="decor" unique_id=82183158]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 566.0
+offset_right = 384.0
+offset_bottom = 600.0
+texture = ExtResource("14_kyw1q")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect32" type="TextureRect" parent="decor" unique_id=1541875458]
+layout_mode = 0
+offset_left = 1947.0
+offset_top = -153.0
+offset_right = 1980.0
+offset_bottom = -119.0
+scale = Vector2(0.7621772, 0.7621772)
+texture = ExtResource("14_kyw1q")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect23" type="TextureRect" parent="decor" unique_id=223128124]
+layout_mode = 0
+offset_left = 1138.0
+offset_top = 140.0
+offset_right = 1171.0
+offset_bottom = 174.0
+scale = Vector2(0.7376301, 0.7376301)
+texture = ExtResource("14_kyw1q")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect37" type="TextureRect" parent="decor" unique_id=890134953]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 254.0
+offset_right = 496.0
+offset_bottom = 288.0
+scale = Vector2(0.7376301, 0.7376301)
+texture = ExtResource("14_kyw1q")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect16" type="TextureRect" parent="decor" unique_id=928701131]
+layout_mode = 0
+offset_left = 185.99997
+offset_top = 388.00003
+offset_right = 218.99997
+offset_bottom = 422.00003
+rotation = 0.3719079
+texture = ExtResource("14_kyw1q")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="decor" unique_id=285422270]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 599.0
+offset_right = 406.0
+offset_bottom = 633.0
+texture = ExtResource("14_kyw1q")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="decor" unique_id=1276353585]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 600.0
+offset_right = 365.0
+offset_bottom = 634.0
+texture = ExtResource("14_kyw1q")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect4" type="TextureRect" parent="decor" unique_id=1065747935]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 489.0
+offset_right = 624.0
+offset_bottom = 531.0
+texture = ExtResource("23_1a6cn")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect5" type="TextureRect" parent="decor" unique_id=302382847]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 236.0
+offset_right = 774.0
+offset_bottom = 278.0
+texture = ExtResource("23_1a6cn")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect34" type="TextureRect" parent="decor" unique_id=1482440967]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 120.0
+offset_right = 119.0
+offset_bottom = 162.0
+scale = Vector2(1.0833553, 1.0833553)
+texture = ExtResource("23_1a6cn")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect6" type="TextureRect" parent="decor" unique_id=52052359]
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 8.0
+offset_right = 1424.0
+offset_bottom = 50.0
+texture = ExtResource("23_1a6cn")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect20" type="TextureRect" parent="decor" unique_id=2047672030]
+layout_mode = 0
+offset_left = 1523.0
+offset_top = -93.0
+offset_right = 1539.0
+offset_bottom = -51.0
+texture = ExtResource("23_1a6cn")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect21" type="TextureRect" parent="decor" unique_id=49388924]
+layout_mode = 0
+offset_left = 1980.0
+offset_top = -168.0
+offset_right = 1996.0
+offset_bottom = -126.0
+texture = ExtResource("23_1a6cn")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect22" type="TextureRect" parent="decor" unique_id=443763962]
+layout_mode = 0
+offset_left = 2038.0
+offset_top = 50.0
+offset_right = 2054.0
+offset_bottom = 92.0
+texture = ExtResource("23_1a6cn")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect30" type="TextureRect" parent="decor" unique_id=1652712931]
+layout_mode = 0
+offset_left = 2141.0
+offset_top = 439.0
+offset_right = 2157.0
+offset_bottom = 481.0
+scale = Vector2(1.5925926, 1.5925926)
+texture = ExtResource("23_1a6cn")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect7" type="TextureRect" parent="decor" unique_id=1143355664]
+layout_mode = 0
+offset_left = 1754.0
+offset_top = 168.0
+offset_right = 1770.0
+offset_bottom = 210.0
+texture = ExtResource("23_1a6cn")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect8" type="TextureRect" parent="decor" unique_id=1200627214]
+layout_mode = 0
+offset_left = 793.0
+offset_top = -120.0
+offset_right = 843.0
+offset_bottom = -38.0
+texture = ExtResource("24_odjtl")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect9" type="TextureRect" parent="decor" unique_id=1823694512]
+layout_mode = 0
+offset_left = 620.0
+offset_top = 423.0
+offset_right = 670.0
+offset_bottom = 505.0
+texture = ExtResource("24_odjtl")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect18" type="TextureRect" parent="decor" unique_id=331004858]
+layout_mode = 0
+offset_left = 1554.0
+offset_top = 229.00002
+offset_right = 1604.0
+offset_bottom = 311.0
+scale = Vector2(1.2203429, 1.2630464)
+texture = ExtResource("24_odjtl")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect10" type="TextureRect" parent="decor" unique_id=265068662]
+layout_mode = 0
+offset_left = 2089.0
+offset_top = 585.0
+offset_right = 2158.0
+offset_bottom = 631.0
+texture = ExtResource("17_vskl2")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect11" type="TextureRect" parent="decor" unique_id=93269773]
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 4.0
+offset_right = 1093.0
+offset_bottom = 50.0
+texture = ExtResource("17_vskl2")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect12" type="TextureRect" parent="decor" unique_id=199230354]
+layout_mode = 0
+offset_left = 1387.0
+offset_top = 25.0
+offset_right = 1403.0
+offset_bottom = 51.0
+texture = ExtResource("25_h0ujt")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect24" type="TextureRect" parent="decor" unique_id=2146517672]
+layout_mode = 0
+offset_left = 534.0
+offset_top = 73.0
+offset_right = 550.0
+offset_bottom = 99.0
+texture = ExtResource("25_h0ujt")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect17" type="TextureRect" parent="decor" unique_id=1425258300]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 378.0
+offset_right = 462.0
+offset_bottom = 404.0
+rotation = 0.032472968
+texture = ExtResource("25_h0ujt")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect13" type="TextureRect" parent="decor" unique_id=514138223]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 130.0
+offset_right = 900.0
+offset_bottom = 165.0
+texture = ExtResource("26_4a6tf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect35" type="TextureRect" parent="decor" unique_id=760595576]
+layout_mode = 0
+offset_left = 1889.0
+offset_top = 470.0
+offset_right = 1907.0
+offset_bottom = 505.0
+texture = ExtResource("26_4a6tf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect36" type="TextureRect" parent="decor" unique_id=1870763560]
+layout_mode = 0
+offset_left = 2022.0001
+offset_top = 67.0
+offset_right = 2040.0001
+offset_bottom = 102.0
+scale = Vector2(0.6576613, 0.6576613)
+texture = ExtResource("26_4a6tf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect19" type="TextureRect" parent="decor" unique_id=429971129]
+layout_mode = 0
+offset_left = 127.0
+offset_top = -52.0
+offset_right = 145.0
+offset_bottom = -17.0
+texture = ExtResource("26_4a6tf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect14" type="TextureRect" parent="decor" unique_id=60096151]
+layout_mode = 0
+offset_left = 2154.0
+offset_top = -59.0
+offset_right = 2172.0
+offset_bottom = -24.0
+texture = ExtResource("26_4a6tf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect15" type="TextureRect" parent="decor" unique_id=536624022]
+layout_mode = 0
+offset_left = 1626.0
+offset_top = 560.00006
+offset_right = 1658.0
+offset_bottom = 612.00006
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("13_m4g5n")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect25" type="TextureRect" parent="decor" unique_id=1499199966]
+layout_mode = 0
+offset_left = 1362.0001
+offset_top = 27.0
+offset_right = 1380.0001
+offset_bottom = 48.0
+scale = Vector2(1.1446267, 1.1446267)
+texture = ExtResource("27_8rrsf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect31" type="TextureRect" parent="decor" unique_id=2115017669]
+layout_mode = 0
+offset_left = 849.00006
+offset_top = -59.999992
+offset_right = 867.00006
+offset_bottom = -38.999992
+scale = Vector2(1.1446267, 1.1446267)
+texture = ExtResource("27_8rrsf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect26" type="TextureRect" parent="decor" unique_id=141657394]
+layout_mode = 0
+offset_left = 1043.0001
+offset_top = 480.00003
+offset_right = 1061.0001
+offset_bottom = 501.00003
+scale = Vector2(1.1446267, 1.1446267)
+texture = ExtResource("27_8rrsf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect33" type="TextureRect" parent="decor" unique_id=98668407]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 141.00002
+offset_right = 142.0
+offset_bottom = 162.00002
+scale = Vector2(1.1446267, 1.1446267)
+texture = ExtResource("27_8rrsf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect27" type="TextureRect" parent="decor" unique_id=1206345314]
+layout_mode = 0
+offset_left = 1379.0001
+offset_top = 413.0
+offset_right = 1397.0001
+offset_bottom = 434.0
+scale = Vector2(1.1446267, 1.1446267)
+texture = ExtResource("27_8rrsf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect28" type="TextureRect" parent="decor" unique_id=552003296]
+layout_mode = 0
+offset_left = 2087.0
+offset_top = 364.0
+offset_right = 2105.0
+offset_bottom = 385.0
+scale = Vector2(1.1446267, 1.1446267)
+texture = ExtResource("27_8rrsf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect29" type="TextureRect" parent="decor" unique_id=783530353]
+layout_mode = 0
+offset_left = 2116.0
+offset_top = 481.00003
+offset_right = 2134.0
+offset_bottom = 502.00003
+scale = Vector2(1.1446267, 1.1446267)
+texture = ExtResource("27_8rrsf")
+stretch_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="paths" type="TextureRect" parent="." unique_id=1594535984]
 z_index = -1
@@ -707,8 +1222,9 @@ position = Vector2(18, 604)
 boost_velocity = -1100.0
 
 [connection signal="timeout" from="power_up_spawns/Timer" to="power_up_spawns" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/pause_button" to="CanvasLayer/pause_button" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/end_menu/play_again_button" to="CanvasLayer/end_menu" method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/end_menu/VBoxContainer/HBoxContainer/minus_time" to="CanvasLayer/end_menu" method="_on_minus_time_pressed"]
 [connection signal="pressed" from="CanvasLayer/end_menu/VBoxContainer/HBoxContainer/add_time" to="CanvasLayer/end_menu" method="_on_add_time_pressed"]
-[connection signal="pressed" from="CanvasLayer/pause_button" to="CanvasLayer/pause_button" method="_on_pressed"]
+[connection signal="pressed" from="main_menu_button_canvas/main_menu_button" to="." method="_on_main_menu_button_pressed"]
 [connection signal="timeout" from="game_timer" to="." method="_on_timer_timeout"]
