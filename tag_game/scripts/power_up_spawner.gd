@@ -7,7 +7,7 @@ const POWER_UP_GROUP := "power_ups"
 
 @export var spawn_interval := 10
 ## The probablity of a spawn spawning every spawn_interal seconds 0.3 = 30%
-@export_range(0, 1, 0.01) var spawn_chance := 0.3
+@export_range(0, 1, 0.01) var spawn_chance := 0.1
 
 var spawn_markers : Dictionary
 
