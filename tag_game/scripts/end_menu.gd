@@ -1,5 +1,6 @@
 extends Control
 
+# Time control values
 const MAX_TIME := 180
 const MIN_TIME := 10
 const TIME_STEP := 10
@@ -23,6 +24,7 @@ func _ready() -> void:
 	time_display.text = TIME_FORMAT % scene_root.set_time
 
 
+# restarts the game with the newly set time
 func _on_play_again_button_pressed() -> void:
 	pause_button.visible = true
 	get_tree().paused = false
@@ -33,6 +35,7 @@ func _on_play_again_button_pressed() -> void:
 	greeting_visuals.visible = false
 
 
+# minus 10 from set tim
 func _on_minus_time_pressed() -> void:
 	if scene_root.set_time - TIME_STEP >= MIN_TIME:
 		scene_root.set_time -= TIME_STEP
@@ -40,6 +43,7 @@ func _on_minus_time_pressed() -> void:
 	time_display.text = TIME_FORMAT % scene_root.set_time
 
 
+# adds 10 from set time
 func _on_add_time_pressed() -> void:
 	if scene_root.set_time + TIME_STEP <= MAX_TIME:
 		scene_root.set_time += TIME_STEP

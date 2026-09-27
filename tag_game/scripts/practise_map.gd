@@ -35,6 +35,7 @@ func _process(_delta):
 		game_time_label.text = str(int(ceil(game_timer.time_left)))
 
 
+# starts the game picks a random player to be it and update indicator
 func _start_game(time : int) -> void:
 	Global.game_running = true
 	game_timer.start(time)
@@ -53,6 +54,7 @@ func _start_game(time : int) -> void:
 	player_two.update_indicator()
 
 
+# When the game is over clears power ups waits for powerups to clear then pausese the game
 func _on_timer_timeout():
 	player_one.clear_power_ups()
 	player_two.clear_power_ups()
@@ -63,6 +65,7 @@ func _on_timer_timeout():
 	pause_button.visible = false
 	var won_player : String
 	
+	# bassed on who is in at the end will show a different win text 
 	if player_one.get_meta(TAGGER_META, false):
 		won_player = PLAYER_TWO_TEXT
 	else:
@@ -71,6 +74,6 @@ func _on_timer_timeout():
 	player_won_label.text = WON_PLAYER_TEXT % won_player
  
 
+# reloads the scene to go back to main menu
 func _on_main_menu_button_pressed() -> void:
-	print("called")
 	get_tree().call_deferred(RELOAD_CURRENT_SCENE)

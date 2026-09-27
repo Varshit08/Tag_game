@@ -8,6 +8,7 @@ const TAGGER_META := "tagger"
 var picked_up := false
 
 
+# makes the player invisible
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_meta(TAGGER_META) and not picked_up:
 		picked_up = true

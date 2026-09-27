@@ -1,4 +1,4 @@
-class_name player
+class_name Player
 extends CharacterBody2D
 
 const TAGGER_META := "tagger"
@@ -58,6 +58,7 @@ func _ready() -> void:
 	update_indicator()
 
 
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.x
 	if not is_on_floor():
@@ -99,12 +100,14 @@ func update_indicator():
 	tag_indicator.visible = get_meta(TAGGER_META)
 
 
+# tagging logic
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body == self:
 		return
 	if !can_tag:
 		return
 	
+	# if the entered body has tegger meta of false sets its to true and update indicator
 	if get_meta(TAGGER_META, false):
 			
 		set_meta(TAGGER_META, false)
@@ -116,6 +119,7 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 		body.can_tag = false
 
 
+# makes the player able to tag after leaving collision shape
 func reset_can_tag():
 	can_tag = true
 
@@ -158,6 +162,7 @@ func _on_invis_boost_timer_timeout() -> void:
 	modulate = NORMAL_MODULATE
 
 
+# clears all power up effects
 func clear_power_ups() -> void:
 	_on_speed_boost_timer_timeout()
 	_on_invis_boost_timer_timeout()

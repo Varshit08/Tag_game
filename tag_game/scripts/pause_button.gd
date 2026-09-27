@@ -24,17 +24,20 @@ func _on_pressed() -> void:
 	_toggle_pause()
 
 
+# toggles the pause of the game
 func _toggle_pause() -> void:
 	if pause_debounce or not Global.game_running:
 		return
 	
 	pause_debounce = true
 	
+	# sets the game paused to the opposite 
 	Global.game_paused = not Global.game_paused
 	main_menu_button_canvas.visible = Global.game_paused
 	get_tree().paused = Global.game_paused
 	pause_menu.visible = Global.game_paused
 	
+	# changes the pause icon
 	if Global.game_paused:
 		icon = PLAY_BUTTON
 	else:
