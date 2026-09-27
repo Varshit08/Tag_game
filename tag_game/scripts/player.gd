@@ -50,12 +50,15 @@ const INVIS_TIME := 8
 var speed_boost_active := false
 var jump_boost_active := false
 var invis_boost_active := false
-var speed = NORMAL_SPEED
+var speed: float = NORMAL_SPEED
 
 
 func _ready() -> void:
 	player_texture_rect.texture = player_texture
 	update_indicator()
+	jump_boost_active = false
+	invis_boost_active = false
+	speed_boost_active = false
 
 
 
