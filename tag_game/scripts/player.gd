@@ -161,14 +161,14 @@ func invis_boost_start() -> void:
 
 
 func _on_invis_boost_timer_timeout() -> void:
-	invis_boost_active = true
+	invis_boost_active = false
 	modulate = NORMAL_MODULATE
 
 
 # clears all power up effects
 func clear_power_ups() -> void:
 	_on_speed_boost_timer_timeout()
-	_on_invis_boost_timer_timeout()
+	_on_jump_boost_timer_timeout()
 	_on_invis_boost_timer_timeout()
 	jump_timer.stop()
 	speed_timer.stop()
